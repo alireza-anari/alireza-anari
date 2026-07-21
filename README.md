@@ -26,13 +26,15 @@ I am a Django backend developer focused on building reliable booking systems, Sa
 
 ## Current Project
 
-### Loomera
+### [Loomera](https://github.com/alireza-anari/loomera-engineering-case-study)
 
 Loomera is a pre-launch booking and operations platform for appointment-based businesses in Iran.
 
 My work includes booking workflows, staff availability, role-based dashboards, payment states, notifications, reporting, automated testing, query optimization, and production-readiness controls.
 
 The production source code and private business logic are not publicly available.
+
+[View the public engineering case study](https://github.com/alireza-anari/loomera-engineering-case-study)
 
 ## Collaboration
 
