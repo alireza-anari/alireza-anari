@@ -1,16 +1,41 @@
-## Hi there 👋
+# Hi, I'm Alireza Anari 👋
 
-<!--
-**alireza-anari/alireza-anari** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I am a Django backend developer focused on building reliable booking systems, SaaS dashboards, REST APIs, and PostgreSQL-backed applications.
 
-Here are some ideas to get you started:
+## What I work on
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Django backend development
+- Booking and scheduling systems
+- REST API development
+- Role-based dashboards and permissions
+- PostgreSQL query optimization
+- Payment and notification workflows
+- Automated and regression testing
+- Production-readiness improvements
+
+## Technology Stack
+
+- Python
+- Django
+- Django REST Framework
+- PostgreSQL
+- PostGIS
+- Redis
+- HTML, CSS, and JavaScript
+- Git
+
+## Current Project
+
+### Loomera
+
+Loomera is a pre-launch booking and operations platform for appointment-based businesses in Iran.
+
+My work includes booking workflows, staff availability, role-based dashboards, payment states, notifications, reporting, automated testing, query optimization, and production-readiness controls.
+
+The production source code and private business logic are not publicly available.
+
+## Collaboration
+
+I am available for remote contract and project-based Django backend work.
+
+[LinkedIn](https://www.linkedin.com/in/alireza-anari-django/)
