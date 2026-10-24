@@ -35,6 +35,14 @@ The supplied YekanBakh4 ProPlus FaNum WOFF2 fonts (400 Regular, 600 SemiBold, 70
 - Basic SSR/no-JavaScript fallback has project/service listings and an external LinkedIn contact link for all three project pages.
 - Each individual feature page has a shareable URL and a copy-link control. Request-similar feature links prefill the local brief form with the right work category and capability name.
 - Browser-backed interaction QA covers the project brief and copy action, feature search aliases, Loomera service selection, Velo security module and Haniel storefront frontend. The Worker source remains independent of the source repository (GitHub updates do not automatically redeploy it).
+### Final post-deploy verification
+
+- Live Cloudflare Browser Rendering checked the **320px** homepage: header and navigation stayed within x=11..309 (viewport 320), hero height was cut from roughly 1178px to 498px, and project cards were visible starting near y=769. Desktop still retains the full hero side panel.
+- At **390px** on `/projects/loomera`, the page title, all four gallery images and three source-code blocks stayed within the 390px viewport (geometry x=15..375; code blocks x=16..374).
+- At **390px**, the exact `/original/haniel/` frontend rendered multiple product images in the original interface. The storefront returned eight image links, with directly verified hero and necklace image assets. An earlier browser-agent failure appears to have navigated away from the original storefront rather than proving broken images.
+- `/assets/fonts/yekanbakh4-proplus-fanum.v2.css` serves only 2.5 kB of style rules, with 400/600/700 fonts loading from separately cached valid `wOF2` endpoints; SHA-256 matches the supplied ZIP.
+- `/sitemap.xml` lists **19 public pages**: one homepage, three project pages and fifteen independent feature pages.
+- LinkedIn inquiry form submission and its copy action are client-side only, and no actual external communication occurs unless a visitor manually sends the generated message.
 ## Client conversion improvements — 2026-10-24
 
 - The home hero now explains three services (Backend/API, Bots/Automation, Product Development) rather than using internal wording about source links.
