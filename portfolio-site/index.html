@@ -287,7 +287,7 @@ function addEngineering(){
 if(!slug||!notes[slug])return;var anchor=document.querySelector('.detail-related');if(!anchor)return;var n=notes[slug],section=document.createElement('section');section.className='architecture-note';section.innerHTML='<div class="overline">ENGINEERING NOTES / ACTUAL PRODUCT</div><h2>'+say('نگاهی به معماری و محدودیت‌ها','Architecture and boundaries')+'</h2><p>'+e(say(n.fa,n.en))+'</p><div class="architecture-tags">'+n.tags.map(function(x){return '<span>'+e(x)+'</span>'}).join('')+'</div>';anchor.before(section);
 }
 function attachBrief(){
-var container=document.getElementById('client-brief');if(!container)return;
+var container=document.getElementById('client-brief');if(!container)return;if(container.dataset.briefWired)return;container.dataset.briefWired='1';
 var kind=document.getElementById('brief-kind'),need=document.getElementById('brief-need'),result=document.getElementById('brief-result'),copy=document.getElementById('brief-copy'),btn=document.getElementById('brief-build');
 var opts=[['bot','ربات تلگرام یا بله','Telegram / Bale bot'],['assistant','دستیار هوشمند','Intelligent assistant'],['api','بک‌اند و API','Backend & API'],['booking','سیستم رزرو','Booking platform'],['other','پروژه نرم‌افزاری دیگر','Other software project']];
 document.getElementById('brief-title').textContent=say('یک پیام حرفه‌ای برای شروع همکاری.','Start with a clear project brief.');
@@ -297,7 +297,7 @@ document.getElementById('brief-need-label').textContent=say('نیاز یا مس�
 need.placeholder=say('مثلاً رباتی برای ثبت درخواست مشتری و پیگیری وضعیت...','For example, a bot to capture client requests and show status...');
 btn.textContent=say('ساخت پیام همکاری ↗','Compose project brief ↗');copy.textContent=say('کپی پیام ⧉','Copy brief ⧉');document.getElementById('brief-hint').textContent=say('ساخت متن داخل مرورگر انجام می‌شود','Text is composed entirely in your browser');
 kind.innerHTML=opts.map(function(row){return '<option value="'+row[0]+'">'+say(row[1],row[2])+'</option>'}).join('');
-btn.addEventListener('click',function(){var selected=opts.find(function(x){return x[0]===kind.value})||opts[0];briefText=say('سلام، من برای اجرای یک پروژه «'+selected[1]+'» نیاز به همکاری دارم.','Hello, I would like to discuss a '+selected[2]+' project.');if(need.value.trim())briefText+='\n'+say('شرح کوتاه: ','Brief: ')+need.value.trim().slice(0,900);briefText+='\n'+say('آیا امکان گفت‌وگو درباره محدوده، زمان و هزینه وجود دارد؟','Could we discuss the scope, timeline and budget?');result.textContent=briefText;result.classList.add('visible');copy.hidden=false});
+btn.addEventListener('click',function(){var selected=opts.find(function(x){return x[0]===kind.value})||opts[0];briefText=say('سلام، من برای اجرای یک پروژه «'+selected[1]+'» نیاز به همکاری دارم.','Hello, I would like to discuss a '+selected[2]+' project.');if(need.value.trim())briefText+='\n'+say('شرح کوتاه: ','Brief: ')+need.value.trim().slice(0,900);briefText+='\n'+say('آیا امکان گفت‌وگو درباره محدوده، زمان و هزینه وجود دارد؟','Could we discuss the scope, timeline and budget?');var params=new URLSearchParams(location.search),chosenFeature=params.get('feature'),chosenProject=params.get('project');if(chosenFeature&&/^[a-z0-9-]+$/.test(chosenFeature))briefText+='\n'+say('نمونه‌کار مرتبط: ','Relevant demo: ')+location.origin+'/features/'+chosenFeature;else if(chosenProject&&/^[a-z0-9-]+$/.test(chosenProject))briefText+='\n'+say('پروژه مرتبط: ','Relevant project: ')+location.origin+'/projects/'+chosenProject;result.textContent=briefText;result.classList.add('visible');copy.hidden=false});
 copy.addEventListener('click',function(){if(!briefText)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(briefText).then(function(){copy.textContent=say('✓ پیام کپی شد','✓ Copied')}).catch(function(){copy.textContent=say('متن را از کادر پایین انتخاب کنید','Select the text below')})}else copy.textContent=say('متن را از کادر پایین انتخاب کنید','Select the text below')});
 }
 function enhance(){if(slug){attachDemo();addEngineering()}else attachBrief()}
@@ -340,6 +340,7 @@ if(!host||!anchor)return;
 var ctx=FEATURES[slug],section=document.createElement('div');section.className='case-sales';
 section.innerHTML='<div><span class="overline">FROM SHOWCASE TO CLIENT PROJECT</span><h2>'+t('این قابلیت را برای کسب‌وکار خودتان می‌خواهید؟','Need this capability in your own product?')+'</h2><p>'+t('می‌توانیم فقط همین ماژول را با نیازهای واقعی، سطح دسترسی و APIهای شما سفارشی‌سازی کنیم.','We can adapt this single module to your workflows, access rules and APIs.')+'</p></div><a class="btn btn-primary" href="/?feature='+encodeURIComponent(slug)+'#contact">'+t('درخواست مشابه ↗','Request something similar ↗')+'</a>';anchor.after(section);
 var hints=document.querySelector('.demo-info ul');if(hints){var a=document.createElement('li');a.textContent=t(ctx[1],ctx[2]);hints.appendChild(a)}
+var share=host.querySelector('.detail-actions');if(share&&!share.querySelector('.share-app')){var a=document.createElement('a');a.className='demo-btn share-app';a.target='_blank';a.rel='noopener noreferrer';a.href='https://wa.me/?text='+encodeURIComponent(t('نمونه‌کار مرتبط با '+ctx[1]+': ','Related demo for '+ctx[2]+': ')+location.origin+location.pathname);a.textContent=t('ارسال لینک در واتساپ ↗','Share via WhatsApp ↗');share.appendChild(a)}
 }
 function intentFromLink(){
 if(location.pathname!=='/'&&!location.pathname.endsWith('/index.html'))return;
@@ -349,20 +350,35 @@ var f=FEATURES[slug],p=STORIES[project],panel=document.getElementById('client-br
 if(!panel)return;
 var label=f?t('قابلیت انتخاب‌شده: ','Selected capability: ')+t(f[1],f[2]):p?t('پروژه مرتبط: ','Related project: ')+({loomera:'Loomera',velo:'Velo','haniel-gold':'Haniel Gold'}[project]||project):'';
 if(!label)return;
-var info=document.createElement('div');info.className='client-context';info.textContent=label;var briefGrid=panel.querySelector('.brief-grid');if(briefGrid)briefGrid.before(info);
-var kind=panel.querySelector('#brief-kind'),need=panel.querySelector('#brief-need');if(kind&&f)kind.value=f[0];
+var info=panel.querySelector('.client-context');if(!info){info=document.createElement('div');info.className='client-context';var briefGrid=panel.querySelector('.brief-grid');if(briefGrid)briefGrid.before(info)}info.textContent=label;
+var kind=panel.querySelector('#brief-kind'),need=panel.querySelector('#brief-need');if(kind&&f)kind.value=f[0]==='ai'?'assistant':f[0]==='bot'?'bot':f[0]==='booking'?'booking':'api';
 if(need&&f)need.placeholder=t('می‌خواهم قابلیت «'+f[1]+'» متناسب با کسب‌وکارم پیاده‌سازی شود...','I would like '+f[2]+' adapted to my business...');
-var build=panel.querySelector('#brief-build');
-if(build&&f){build.addEventListener('click',function(){var out=panel.querySelector('#brief-result');if(out&&!out.dataset.attached){var txt=out.textContent;out.textContent=txt+'\n'+t('نمونه‌کار مورد اشاره: ','Relevant demo: ')+location.origin+'/features/'+slug;out.dataset.attached='1';var copy=panel.querySelector('#brief-copy');if(copy){copy.onclick=async function(){try{await navigator.clipboard.writeText(out.textContent);copy.textContent=t('✓ پیام کپی شد','✓ Copied')}catch(e){copy.textContent=t('متن را دستی انتخاب کنید','Select the text manually')}}}}})}
+
 }
 function fixDynamicContact(){
 var x=document.querySelector('.contact-actions .btn-secondary');if(x&&x.getAttribute('href')==='/#features'){x.href='/#features';x.removeAttribute('target');x.textContent=t('مشاهده دموها ↗','Explore demos ↗')}
+}
+
+function translateBrief(){
+var p=document.getElementById('client-brief');if(!p)return;
+var values=[['bot','ربات تلگرام یا بله','Telegram / Bale bot'],['assistant','دستیار هوشمند','Intelligent assistant'],['api','بک‌اند و API','Backend & API'],['booking','سیستم رزرو','Booking platform'],['other','پروژه نرم‌افزاری دیگر','Other software project']];
+var k=p.querySelector('#brief-kind'),v=k&&k.value;
+var title=p.querySelector('#brief-title'),intro=p.querySelector('#brief-intro'),kLabel=p.querySelector('#brief-kind-label'),nLabel=p.querySelector('#brief-need-label'),need=p.querySelector('#brief-need'),btn=p.querySelector('#brief-build'),copy=p.querySelector('#brief-copy'),hint=p.querySelector('#brief-hint');
+if(title)title.textContent=t('یک پیام حرفه‌ای برای شروع همکاری.','Start with a clear project brief.');
+if(intro)intro.textContent=t('نوع پروژه و نیازتان را بگویید؛ متن آماده ارسال ساخته می‌شود. اطلاعات در مرورگر می‌ماند.','Choose a project and describe your needs. The brief is composed locally.');
+if(kLabel)kLabel.textContent=t('نوع پروژه','Project type');
+if(nLabel)nLabel.textContent=t('نیاز یا مسئله شما (اختیاری)','Your challenge (optional)');
+if(k){k.innerHTML=values.map(x=>'<option value="'+x[0]+'">'+t(x[1],x[2])+'</option>').join('');if(v)k.value=v}
+if(need&&!new URLSearchParams(location.search).get('feature'))need.placeholder=t('مثلاً ربات برای پیگیری درخواست مشتری...','E.g. a bot to track support requests...');
+if(btn)btn.textContent=t('ساخت پیام همکاری ↗','Compose project brief ↗');
+if(copy&&!copy.hidden)copy.textContent=t('کپی پیام ⧉','Copy brief ⧉');
+if(hint)hint.textContent=t('متن داخل مرورگر ساخته می‌شود و به سرور ارسال نمی‌شود','The text is composed locally and not sent to a server');
 }
 function onRender(){
 fixDynamicContact();
 if(type==='projects')projectStory();
 if(type==='features')featureStory();
-if(!type)intentFromLink()
+if(!type){translateBrief();intentFromLink()}
 }
 window.addEventListener('portfolio-render',onRender);
 onRender();
