@@ -3,7 +3,7 @@ function j(data,status=200){return new Response(JSON.stringify(Object.assign({de
 const normalize=s=>String(s||"").normalize("NFKC").toLowerCase().replace(/[ي]/g,"ی").replace(/[ك]/g,"ک").replace(/\u200c/g," ").trim();
 const choose=(en,fa,x)=>x==="en"?en:fa;
 async function demoEndpoint(req,url){
-if(url.pathname==="/api/showcase/health"&&req.method==="GET")return j({status:"ok",engine:"Cloudflare Worker",types:["loomi","bot","booking","otp"]});
+if(url.pathname==="/api/showcase/health"&&req.method==="GET")return j({status:"ok",engine:"Cloudflare Worker",types:["loomi","bot","booking","otp","discounts","notifications","analytics","gold-pricing","role-dashboards","quick-links","payment-states"]});
 if(req.method!=="POST")return j({error:"POST required"},405);
 const origin=req.headers.get("origin");if(origin){try{if(new URL(origin).host!==url.host)return j({error:"same origin only"},403)}catch(e){return j({error:"invalid origin"},403)}}
 if((Number(req.headers.get("content-length")||0))>2048)return j({error:"payload too large"},413);
@@ -30,6 +30,63 @@ if(name==="otp"){
 if(body.action==="request")return j({reply:t("کد نمونه ۱۲۳۴۵۶ آماده است. پیامک، ایمیل یا کد واقعی ارسال نشد.","Demo code 123456 is ready. No real SMS, email or OTP was sent."),sample_code:"123456",real_delivery:false,authenticated:false});
 if(body.action==="verify"){const entered=normalize(body.code).replace(/[۰-۹]/g,c=>String("۰۱۲۳۴۵۶۷۸۹".indexOf(c))).replace(/[٠-٩]/g,c=>String("٠١٢٣٤٥٦٧٨٩".indexOf(c)));const ok=entered==="123456";return j({reply:ok?t("✓ کد نمونه پذیرفته شد. نشست ورود واقعی ایجاد نشده است.","✓ Sample code accepted. No real authenticated session was created."):t("کد نمونه صحیح نیست. از ۱۲۳۴۵۶ استفاده کنید.","Sample code did not match. Use 123456."),sample_verified:ok,authenticated:false},ok?200:422)}
 return j({error:"invalid demo action"},400);
+}
+
+if(name==="discounts"){
+const code=String(body.code||"").trim().toUpperCase().slice(0,24);
+const total=Number(body.subtotal);
+if(!Number.isSafeInteger(total)||total<1000||total>50000000)return j({reply:t("مبلغ ورودی معتبر نیست.","Invalid sample subtotal."),error:"invalid_subtotal"},422);
+const rules={DEMO10:{percent:10,cap:80000,min:0},WELCOME15:{percent:15,cap:120000,min:500000}};
+const rule=rules[code];
+if(!rule)return j({reply:t("کد آزمایشی شناخته نشد. DEMO10 یا WELCOME15 را امتحان کنید.","Unknown demo coupon. Try DEMO10 or WELCOME15."),valid:false,subtotal:total,discount:0},422);
+if(total<rule.min)return j({reply:t("این کد برای حداقل مبلغ ۵۰۰٬۰۰۰ تومان فعال است.","This code requires a sample subtotal of at least 500,000 toman."),valid:false,min_subtotal:rule.min,subtotal:total},422);
+const raw=Math.floor(total*rule.percent/100),discount=Math.min(raw,rule.cap);
+return j({reply:t("✓ کد تخفیف در سناریوی آزمایشی پذیرفته شد.","✓ Demo discount applied."),valid:true,coupon:code,subtotal:total,percent:rule.percent,cap:rule.cap,discount,total:total-discount,currency:"toman",amounts_are_fictional:true,payment_processed:false});
+}
+if(name==="notifications"){
+const event=String(body.event||"");const channel=String(body.channel||"");const role=String(body.role||"customer");
+const supported=["booking_created","rescheduled","service_completed","reminder"];
+if(!supported.includes(event)||!["in_app","sms","bale"].includes(channel)||!["customer","stylist","manager"].includes(role))return j({error:"unsupported notification event, channel or role"},422);
+const optedOut=body.opt_out===true;
+const templates={booking_created:t("نوبت نمونه جدید شما ثبت شد؛ فردا ساعت ۱۱:۰۰.","Your sample booking is confirmed for tomorrow at 11:00."),rescheduled:t("نوبت نمونه به فردا ساعت ۱۶:۳۰ تغییر کرد.","Your example booking moved to tomorrow at 16:30."),service_completed:t("خدمت نمونه پایان یافت؛ وضعیت آن در پنل به‌روزرسانی شد.","Sample service completed; dashboard status updated."),reminder:t("یادآوری نمونه: فردا ساعت ۱۱:۰۰ وقت دارید.","Sample reminder: appointment tomorrow at 11:00.")};
+const allowed=!(event==="reminder"&&role==="manager")&&!optedOut;
+return j({reply:allowed?templates[event]:t("ارسال نمونه با توجه به ترجیح یا نقش کاربر متوقف شد.","Sample delivery suppressed by preference or role."),event,channel,role,delivery:allowed?"would_send":"suppressed",reason:optedOut?"user_opt_out":!allowed?"role_policy":null,real_message_sent:false,recipient_is_fictional:true});
+}
+if(name==="analytics"){
+const period=String(body.period||"today");
+const datasets={today:{values:[1,2,1,3,2,2,1],bookings:12,completed:9,cancelled:1},week:{values:[6,8,11,13,9,12,9],bookings:68,completed:51,cancelled:7},month:{values:[28,43,38,55,44,41,35],bookings:284,completed:221,cancelled:26}};
+if(!datasets[period])return j({error:"unsupported period"},422);
+const row=datasets[period];const pending=row.bookings-row.completed-row.cancelled;
+return j({reply:t("گزارش نمونه بر اساس داده ساختگی آماده شد.","Sample report generated using fictional data."),period,summary:{bookings:row.bookings,completed:row.completed,cancelled:row.cancelled,pending},trend:row.values.map((count,index)=>({index:index+1,count})),source:"fixed_synthetic_dataset",contains_real_business_data:false});
+}
+if(name==="gold-pricing"){
+const weight=Number(body.weight),rate=Number(body.rate),labor=Number(body.labor);
+if(!Number.isFinite(weight)||weight<=0||weight>200||!Number.isFinite(rate)||rate<1000||rate>100000000||!Number.isFinite(labor)||labor<0||labor>50)return j({reply:t("ورودی‌ها خارج از محدوده آزمایش هستند.","Inputs exceed the sample calculator range."),error:"invalid_inputs"},422);
+const metal=Math.round(weight*rate),laborCharge=Math.round(metal*labor/100);
+return j({reply:t("محاسبه آزمایشی انجام شد؛ این قیمت فروش نیست.","Illustrative calculation complete; this is not a selling price."),weight_g:weight,sample_rate_per_g:rate,labor_percent:labor,metal_value:metal,labor_value:laborCharge,illustrative_total:metal+laborCharge,currency:"toman",live_rate_used:false,includes_taxes:false,includes_margin:false,final_customer_price:false});
+}
+if(name==="role-dashboards"){
+const role=String(body.role||"customer"),resource=String(body.resource||"overview");
+if(!["customer","stylist","manager"].includes(role)||!["overview","finance","team"].includes(resource))return j({error:"unsupported role or resource"},422);
+if(role!=="manager"&&resource!=="overview")return j({reply:t("نمایش این بخش برای نقش انتخاب‌شده مجاز نیست (در این سناریو).","This sample role cannot access this resource."),role,resource,allowed:false,authorization:"illustrative_policy_only"},403);
+const datasets={customer:{title:t("پروفایل مشتری نمونه","Fictional customer workspace"),cards:[{label:t("نوبت آینده","Upcoming"),value:2},{label:t("پیام خوانده‌نشده","Unread alerts"),value:1}],actions:["my_appointments","rebook"]},stylist:{title:t("محیط کار متخصص نمونه","Fictional specialist workspace"),cards:[{label:t("نوبت امروز","Today’s slots"),value:4},{label:t("درخواست‌های جدید","New requests"),value:2}],actions:["start_service","request_leave"]},manager:{title:t("مدیریت مجموعه نمونه","Fictional manager workspace"),cards:[{label:t("رزرو امروز","Today’s bookings"),value:12},{label:t("در انتظار بررسی","Needs review"),value:3}],actions:["team_overview","financial_reports"]}};
+const data=datasets[role];return j({reply:data.title,role,resource,allowed:true,cards:resource==="finance"?[{label:t("تراکنش نمونه","Sample transactions"),value:24},{label:t("در انتظار تسویه","Pending settlement"),value:2}]:resource==="team"?[{label:t("اعضای تیم نمونه","Sample team members"),value:7},{label:t("درخواست عضویت","Membership requests"),value:1}]:data.cards,actions:data.actions,contains_real_users:false,authorization:"illustrative_policy_only"});
+}
+if(name==="quick-links"){
+const channel=String(body.channel||"salon");
+if(!["salon","stylist","campaign"].includes(channel))return j({error:"invalid sample link kind"},422);
+const names={salon:"studio-demo",stylist:"stylist-demo",campaign:"autumn-demo"};
+const token=names[channel],path="/book/preview/"+token;
+return j({reply:t("مسیر نمونه آماده شد. این لینک، رزرو عملیاتی ندارد.","Sample booking path generated. It is not a live booking URL."),channel,example_path:path,attribution_tag:channel==="campaign"?"autumn":channel,qr_available_in_product:true,qr_generated_in_demo:false,bookings_created:0,link_is_live:false});
+}
+if(name==="payment-states"){
+const states=["booked","started","completed","paid"];
+const from=String(body.state||"booked"),action=String(body.action||"");
+if(!states.includes(from)||!["start","finish","collect","reset"].includes(action))return j({error:"unknown simulated state/action"},422);
+if(action==="reset")return j({reply:t("سناریو به رزرو اولیه برگشت.","Sample state reset."),state:"booked",payment_collected:false,real_transaction:false});
+const step={start:{from:"booked",to:"started"},finish:{from:"started",to:"completed"},collect:{from:"completed",to:"paid"}}[action];
+if(from!==step.from)return j({reply:t("این عملیات در وضعیت فعلی مجاز نیست.","This action is not allowed in the current simulated state."),state:from,allowed:false,expected:step.from},409);
+return j({reply:t("✓ تغییر وضعیت نمایشی انجام شد.","✓ Simulated status advanced."),previous_state:from,state:step.to,allowed:true,payment_collected:false,real_transaction:false});
 }
 return j({error:"unknown demo endpoint"},404);
 }
