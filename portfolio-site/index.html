@@ -361,6 +361,11 @@ var ctx=FEATURES[slug],section=document.createElement('div');section.className='
 section.innerHTML='<div><span class="overline">FROM SHOWCASE TO CLIENT PROJECT</span><h2>'+t('این قابلیت را برای کسب‌وکار خودتان می‌خواهید؟','Need this capability in your own product?')+'</h2><p>'+t('می‌توانیم فقط همین ماژول را با نیازهای واقعی، سطح دسترسی و APIهای شما سفارشی‌سازی کنیم.','We can adapt this single module to your workflows, access rules and APIs.')+'</p></div><a class="btn btn-primary" href="/?feature='+encodeURIComponent(slug)+'#contact">'+t('درخواست مشابه ↗','Request something similar ↗')+'</a>';anchor.after(section);
 var hints=document.querySelector('.demo-info ul');if(hints){var a=document.createElement('li');a.textContent=t(ctx[1],ctx[2]);hints.appendChild(a)}
 var share=host.querySelector('.detail-actions');if(share&&!share.querySelector('.share-app')){var a=document.createElement('a');a.className='demo-btn share-app';a.target='_blank';a.rel='noopener noreferrer';a.href='https://wa.me/?text='+encodeURIComponent(t('نمونه‌کار مرتبط با '+ctx[1]+': ','Related demo for '+ctx[2]+': ')+location.origin+location.pathname);a.textContent=t('ارسال لینک در واتساپ ↗','Share via WhatsApp ↗');share.appendChild(a)}
+if(share&&!share.querySelector('.copy-feature-link')){
+var copy=document.createElement('button');copy.type='button';copy.className='demo-btn copy-feature-link';copy.textContent=t('کپی لینک قابلیت ⧉','Copy feature link ⧉');
+copy.addEventListener('click',async function(){var url=location.origin+location.pathname;try{await navigator.clipboard.writeText(url);copy.textContent=t('لینک کپی شد ✓','Link copied ✓')}catch(e){var box=document.createElement('textarea');box.value=url;box.readOnly=true;box.style.position='fixed';box.style.opacity='0';document.body.appendChild(box);box.select();var ok=false;try{ok=document.execCommand('copy')}catch(err){}box.remove();if(ok)copy.textContent=t('لینک کپی شد ✓','Link copied ✓');else window.prompt(t('لینک را کپی کنید','Copy this link'),url)}});
+share.appendChild(copy);
+}
 }
 function intentFromLink(){
 if(location.pathname!=='/'&&!location.pathname.endsWith('/index.html'))return;
