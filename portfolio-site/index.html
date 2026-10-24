@@ -131,7 +131,7 @@ navWork:'Work',navServices:'Expertise',navAbout:'About',navContact:'Contact',hea
 var lang='fa',active='all';
 try{if(localStorage.getItem('portfolio-lang')==='en')lang='en'}catch(e){}
 var repos=document.getElementById('repos'),filters=Array.from(document.querySelectorAll('.filter'));
-function setLang(v){lang=v;document.documentElement.lang=v;document.documentElement.dir=v==='fa'?'rtl':'ltr';document.getElementById('lang').textContent=v==='fa'?'EN':'فا';document.title=v==='fa'?'علیرضا اناری | توسعه‌دهنده Django و Backend':'Alireza Anari | Django & Backend Engineer';document.querySelectorAll('[data-i]').forEach(function(el){var key=el.getAttribute('data-i');if(messages[v][key])el.textContent=messages[v][key]});try{localStorage.setItem('portfolio-lang',v)}catch(e){}}
+function setLang(v){lang=v;document.documentElement.lang=v;document.documentElement.dir=v==='fa'?'rtl':'ltr';document.getElementById('lang').textContent=v==='fa'?'EN':'فا';document.title=v==='fa'?'علیرضا اناری | توسعه‌دهنده Django و Backend':'Alireza Anari | Django & Backend Engineer';document.querySelectorAll('[data-i]').forEach(function(el){var key=el.getAttribute('data-i');if(messages[v][key])el.textContent=messages[v][key]});document.querySelectorAll('[data-desc-fa]').forEach(function(el){el.textContent=el.getAttribute(v==='fa'?'data-desc-fa':'data-desc-en')});try{localStorage.setItem('portfolio-lang',v)}catch(e){}}
 document.getElementById('lang').addEventListener('click',function(){setLang(lang==='fa'?'en':'fa')});setLang(lang);
 document.getElementById('year').textContent=String(new Date().getFullYear());
 var menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.addEventListener('click',function(){var o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(o));menu.setAttribute('aria-label',o?'Close menu':'Open menu');menu.textContent=o?'×':'☰'});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'})});
@@ -146,6 +146,7 @@ var descriptions={
 'madar-vpn':{fa:'مخزن توسعه مرتبط با VPN.',en:'VPN-related development repository.',category:'mobile backend',tech:'Networking'},
 'fitlink-v1':{fa:'شروع توسعه پروژه FitLink.',en:'FitLink project bootstrap and early-stage work.',category:'product',tech:'Product'}
 };
+Array.from(repos.querySelectorAll('.repo-card')).forEach(function(a){var h=a.querySelector('h4'),p=a.querySelector('p');if(h&&p&&descriptions[h.textContent]){p.setAttribute('data-desc-fa',descriptions[h.textContent].fa);p.setAttribute('data-desc-en',descriptions[h.textContent].en)}});setLang(lang);
 function syncGithub(){
 fetch('https://api.github.com/users/alireza-anari/repos?per_page=100&sort=updated',{headers:{Accept:'application/vnd.github+json'}}).then(function(resp){if(!resp.ok)throw Error('GitHub request failed');return resp.json()}).then(function(data){
 if(!Array.isArray(data))return;
@@ -156,7 +157,7 @@ all.forEach(function(r){
 var d=descriptions[r.name]||{},a=document.createElement('a');a.className='repo-card';a.href=r.html_url;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('data-filter-cat',d.category||(r.language==='Python'?'backend':'product'));
 var ico=document.createElement('span');ico.className='repo-icon';ico.textContent='{ }';a.appendChild(ico);
 var h=document.createElement('h4');h.textContent=r.name;a.appendChild(h);
-var p=document.createElement('p');p.textContent=d[lang]||r.description||'Public GitHub repository';a.appendChild(p);
+var p=document.createElement('p');p.setAttribute('data-desc-fa',d.fa||r.description||'مخزن عمومی GitHub');p.setAttribute('data-desc-en',d.en||r.description||'Public GitHub repository');p.textContent=p.getAttribute(lang==='fa'?'data-desc-fa':'data-desc-en');a.appendChild(p);
 var foot=document.createElement('span');foot.className='repo-footer';var tech=document.createElement('span');tech.textContent=d.tech||r.language||'Repository';var arrow=document.createElement('span');arrow.className='arrow';arrow.textContent='↗';foot.append(tech,arrow);a.appendChild(foot);repos.appendChild(a)
 });
 document.getElementById('project-total').textContent=String(all.length).padStart(2,'0');document.getElementById('sync-status').textContent='GITHUB / '+String(all.length).padStart(2,'0')+' REPOS';applyFilter();
