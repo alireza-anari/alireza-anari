@@ -1,43 +1,46 @@
-# Alireza Anari — Portfolio Website
+# Alireza Anari — Feature-first Portfolio
 
-A lightweight, responsive, bilingual (FA/EN) engineering portfolio focusing on Django, Python, REST APIs, booking platforms and practical software development.
+**Live**: https://alireza-portfolio.alirezaanari117.workers.dev/
 
-## Live website
+This portfolio is intentionally **client-facing and source-free**: no GitHub repo links, no public repository listing, and no dependency on the development status of a repo. It focuses on skills, product overviews and individually shareable interactive feature demos.
 
-https://alireza-portfolio.alirezaanari117.workers.dev/
+## Published feature demos
 
-## Source
+- [لومی؛ دستیار هوشمند](https://alireza-portfolio.alirezaanari117.workers.dev/features/loomi) — Loomera
+- [ربات تلگرام](https://alireza-portfolio.alirezaanari117.workers.dev/features/telegram-bot) — Loomera
+- [ربات بله](https://alireza-portfolio.alirezaanari117.workers.dev/features/bale-bot) — Loomera
+- [احراز هویت OTP](https://alireza-portfolio.alirezaanari117.workers.dev/features/otp-auth) — Loomera · Velo
+- [موتور رزرو و زمان‌بندی](https://alireza-portfolio.alirezaanari117.workers.dev/features/booking) — Loomera
+- [لینک و QR رزرو](https://alireza-portfolio.alirezaanari117.workers.dev/features/quick-links) — Loomera
+- [داشبوردهای چندنقشی](https://alireza-portfolio.alirezaanari117.workers.dev/features/role-dashboards) — Loomera
+- [سیستم اعلان و یادآوری](https://alireza-portfolio.alirezaanari117.workers.dev/features/notifications) — Loomera
+- [چرخه وضعیت پرداخت](https://alireza-portfolio.alirezaanari117.workers.dev/features/payment-states) — Loomera
+- [گزارش‌ها و تحلیل عملیات](https://alireza-portfolio.alirezaanari117.workers.dev/features/analytics) — Loomera
+- [جست‌وجوی خدمات](https://alireza-portfolio.alirezaanari117.workers.dev/features/discovery) — Loomera
+- [تخفیف و کوپن](https://alireza-portfolio.alirezaanari117.workers.dev/features/discounts) — Loomera
+- [مدیریت اتصال VPN](https://alireza-portfolio.alirezaanari117.workers.dev/features/vpn-control) — Velo
+- [پاداش و وفاداری](https://alireza-portfolio.alirezaanari117.workers.dev/features/loyalty) — Velo
+- [موتور قیمت‌گذاری طلا](https://alireza-portfolio.alirezaanari117.workers.dev/features/gold-pricing) — Haniel Gold
 
-- [index.html](./index.html): Entire static portfolio (HTML, CSS, JavaScript). No build step or external UI framework required.
-- Public GitHub projects are rendered in a built-in fallback gallery. After page load, the gallery refreshes from the public GitHub REST API for `alireza-anari`. Private repositories and the profile README repository are excluded.
-- Featured projects have editorial descriptions drawn from public README documents.
-- Language toggle supports Persian RTL and English LTR.
+## Product overviews
 
-## Working with the design
+- [Loomera — پلتفرم رزرو و عملیات](https://alireza-portfolio.alirezaanari117.workers.dev/projects/loomera)
+- [Velo — محصول Android و شبکه](https://alireza-portfolio.alirezaanari117.workers.dev/projects/velo)
+- [Haniel Gold — تجارت الکترونیک](https://alireza-portfolio.alirezaanari117.workers.dev/projects/haniel-gold)
 
-To preview locally, open `index.html` in a browser, or start a static server in this folder:
+## Demo boundaries
 
-```sh
-python -m http.server 8000
-```
+All interactive demos are independently implemented in client-side JavaScript, using **fictional data and illustrative flows**. They are **not connected** to the original products, live LLM inference, messaging providers, SMS, payments, real VPN connections or operational databases. Some underlying product modules require deployment configuration or additional release readiness work. The portfolio describes capabilities without claiming that unfinished products are production-ready.
 
-To change content, update the HTML and the `messages.fa` / `messages.en` strings in the inline script.
+## Files & deployment
 
-## Deployment
+- `index.html`: responsive, bilingual HTML/CSS/JS website, initial static content and feature catalog.
+- Published as Cloudflare Worker `alireza-portfolio` (Cloudflare account subdomain `alirezaanari117`).
+- The Worker includes server-rendered introductory content for each `/features/:slug` and `/projects/:slug` URL, and then client JavaScript enhances the detail page into a functional demo.
+- The Worker serves favicon, robots.txt, sitemap.xml, and feature-specific SEO metadata.
 
-The live version was published as a standalone Cloudflare Worker named `alireza-portfolio` in the connected Cloudflare account. The Worker returns the static HTML and serves /favicon.svg, /robots.txt and /sitemap.xml.
+**Deployment process:** Changes to this GitHub source file do not automatically redeploy Cloudflare. The current live Worker is a separate deployed copy. Re-upload the updated page to the Worker, or configure Git-based CI/CD later.
 
-**Note:** The Cloudflare Worker currently contains a deployed copy of index.html. Editing this GitHub file does not update the live Worker until you deploy the modified HTML again. A separate CI/CD pipeline is not configured.
+## Maintainability
 
-An alternative is to deploy this folder as a static project on Cloudflare Pages (output folder = this folder, no build command) and connect a GitHub workflow, enabling automatic redeployments on changes.
-
-## Privacy
-
-This site intentionally does not disclose private-repository details, private credentials or a contact email not explicitly confirmed for public use. Visitors can contact via the LinkedIn and GitHub links in the site.
-
-## Next enhancements
-
-- Add a verified public contact email and/or inquiry form.
-- Connect a custom domain and configure Search Console.
-- Add selected project screenshots and measurable engineering outcomes, where accurate.
-- Create dedicated case-study pages for flagship projects.
+Feature definitions and demo scenarios are inside the inline script. Edit the feature catalog, translations and demo logic together when changing features. Do not add live service credentials or private code to the public portfolio.
