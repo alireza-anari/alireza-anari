@@ -27,8 +27,8 @@
         "en": "Conflict-aware scheduling, separate role dashboards, notifications and customer communication modules."
       },
       "demoIntro": {
-        "fa": "در نسخه آزمایشی می‌توانید خدمت و ساعت رزرو کنید، سؤال‌هایی از لومی بپرسید یا عملکرد منوی ربات را ببینید. همه اطلاعات ساختگی است.",
-        "en": "Try booking a sample slot, asking Loomi a question or exploring the bot menu. Everything uses fictional data."
+        "fa": "اینجا ماژول انتخاب خدمت خودِ Loomera اجرا می‌شود؛ منطق جاوااسکریپت از فایل‌های اصلی پروژه است، اما نام خدمات و قیمت‌ها داده آزمایشی‌اند. بخش سروری و ثبت نهایی رزرو در این نمایش فعال نیست.",
+        "en": "This runs Loomera’s original service-selection JavaScript modules, unchanged. Service names and amounts are sample data; server-side booking and submission are not enabled."
       },
       "galleryNote": {
         "fa": "یک نمای منتخب از رابط پیش‌انتشار و چند تصویر رابط که در خود پروژه استفاده شده‌اند؛ این تصاویر به معنی عمومی و آماده‌بودن محصول نیستند.",
@@ -158,8 +158,8 @@
         "en": "APIs for sessions and credits, account security, reward rules and mobile-focused UI."
       },
       "demoIntro": {
-        "fa": "در دموی مستقل می‌توانید حالت مهمان و ویژه، زمان جایزه و وضعیت اتصال را تغییر دهید؛ VPN واقعی روشن نمی‌شود.",
-        "en": "Try guest/premium modes, reward credits and simulated connection state. No real VPN tunnel starts."
+        "fa": "Velo یک اپ اندرویدی است و نمی‌توان آن را در مرورگر اجرا کرد. به‌جای نمایش اتصال ساختگی، ماژول Python واقعی بک‌اند آن برای هش‌کردن و بررسی داده نمونه داخل مرورگر اجرا می‌شود؛ اجرای اپ موبایل نیازمند APK و دستگاه/شبیه‌ساز اندروید است.",
+        "en": "Velo is a native Android app and cannot run in a regular browser. Instead, this page directly executes its original Python security module on sample data. Running the full app requires an Android device/emulator and build."
       },
       "galleryNote": {
         "fa": "این تصاویر ماکاپ طراحی و دارایی‌های خود اپ هستند؛ اسکرین‌شات نسخه منتشرشده محسوب نمی‌شوند.",
@@ -279,8 +279,8 @@
         "en": "Validate rate freshness and currency units, separate calculation components and flag unusual rate movements."
       },
       "demoIntro": {
-        "fa": "یکی از محصولات تصویری را انتخاب و با یک نرخ فرضی قیمت نمونه را محاسبه کنید. عدد به‌دست‌آمده قیمت بازار یا پیشنهاد فروش نیست.",
-        "en": "Choose a sample product and calculate an illustrative price using a fictional rate. It is not a market quote or selling price."
+        "fa": "این صفحه از فایل‌های HTML، CSS و JavaScript واقعی فرانت‌اند Haniel Gold اجرا می‌شود. می‌توانید منو، فیلتر کالا، جست‌وجو، علاقه‌مندی و سبد نمایشی خودِ پروژه را امتحان کنید؛ اطلاعات فروشگاه و درگاه واقعی متصل نیست.",
+        "en": "The actual Haniel Gold frontend HTML, CSS and JavaScript files run here. Explore the original catalog navigation, filtering, favorites and local cart. No live inventory, rates or payment gateways are connected."
       },
       "galleryNote": {
         "fa": "این‌ها تصاویر واقعی استفاده‌شده در فرانت‌اند پروژه هستند، نه اسکرین‌شات سفارش واقعی یا فروشگاه فعال.",
