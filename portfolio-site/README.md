@@ -18,6 +18,19 @@ Standalone safe sample-data demos:
 
 Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
 
+## Client conversion and trust update — 2026-10-24
+
+The portfolio has been revised after a skeptical nontechnical customer review. **Verified public email:** `alirezaanari119@gmail.com` (provided by the owner for the website). A phone number has not been published.
+
+- Primary contact buttons now open a direct `mailto:` link; LinkedIn remains an alternative, not a required step.
+- The homepage project brief still runs entirely in the browser, but can prepare a recipient/subject/body in the visitor's email app through `mailto:`. Pressing the email link only opens a draft; nothing is auto-submitted or stored by the site.
+- The homepage explains the three-step proposed working process: describe the need, clarify scope and dependencies before any estimate, then implement and review agreed work. No unverified schedule or success claims.
+- Project pages now contrast **actual runnable or source-verifiable functionality** with clear limitations. No fabricated customer reviews, conversion metrics, revenue claims or completed-client logos.
+- The three actual project source excerpts remain linked, while Python code excerpts are collapsed by default under an optional technical detail section. The main project path remains plain-language overview → gallery → runnable slice → optional source code.
+- Standalone feature pages have one (not duplicate) copy-link button, a direct email action and preserved WhatsApp share/request-similar routes. The original-feature sandboxes are explicitly not production-integrated.
+- The isolated Loomera and Velo sample pages include direct project email links and explain that their runnable parts are **not** complete production apps; the original Haniel frontend gains a small portfolio-only email overlay without modifying the original business logic.
+- Deployed Cloudflare Worker includes updated server-rendered pages and metadata/fallback email actions. The GitHub repository itself is never linked from public portfolio pages.
+
 ## Final launch audit — 2026-10-24
 
 **Live site:** https://alireza-portfolio.alirezaanari117.workers.dev/
