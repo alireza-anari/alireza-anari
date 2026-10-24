@@ -18,6 +18,18 @@ Standalone safe sample-data demos:
 
 Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
 
+## Project demos now execute original source (2026-10-24)
+
+Earlier handcrafted `/demo/:slug` project simulations have been replaced. Those legacy URLs now redirect to actual isolated source-backed project slices. Do **not** market the earlier local-only feature simulations as the original application.
+
+- **Loomera:** https://alireza-portfolio.alirezaanari117.workers.dev/original/loomera/ — Original unmodified ES modules `static/js/components/services.js`, `bookingBar.js`, `storage_keys.js` run within an isolated page. The surrounding service cards and prices are fictional and the flow safely stops after service selection; no Django service or appointment DB.
+- **Haniel Gold:** https://alireza-portfolio.alirezaanari117.workers.dev/original/haniel/ — Original frontend `index.html`, `app.js`, `styles.css` and its bundled gallery assets are served directly from allowlisted original source. The original code performs product browsing, filters, favorites and local cart. Only runtime config is overridden to `apiBaseUrl: ''` so no production backend, checkout, payment, customer account or real market prices are accessed.
+- **Velo:** https://alireza-portfolio.alirezaanari117.workers.dev/original/velo/ — Original unchanged Python `backend/app/security.py` executes `token_for_user()` and `decode_subject()` directly in the browser using Pyodide WASM with a fake local signing key. The test validates an example identity and rejects a tampered token. This is a genuine FastAPI backend module, **not** the complete Kotlin Android app and **not** a working VPN connection.
+
+Authentic frontend media routes and code modules are allowlisted in the Cloudflare Worker. No GitHub repository links are displayed on the website. Existing standalone `/features/:slug` demos remain mock/synthetic and are clearly separate from original source-backed project slices.
+
+Source templates used for these slices in the portfolio repository: `authentic-loomera.html`, `authentic-velo.html`. Legacy simulated demo source remains for historical feature pages. Full-feature Django and Android production demos require separate isolated backend/Android builds; those are not deployed here.
+
 ## Published feature demos
 
 - [لومی؛ دستیار هوشمند](https://alireza-portfolio.alirezaanari117.workers.dev/features/loomi) — Loomera
