@@ -4,6 +4,20 @@
 
 This portfolio is intentionally **client-facing and source-free**: no GitHub repo links, no public repository listing, and no dependency on the development status of a repo. It focuses on skills, product overviews and individually shareable interactive feature demos.
 
+## 2026-10-24: Project-first redesign (deployed)
+
+**The homepage and project pages now target nontechnical clients.** Visitors first pick one of three products. Each project detail is ordered as: plain-language summary, business challenge, solution, an authentic-labeled image gallery with click-to-enlarge, a prominent **Launch Interactive Demo** CTA, and finally **three curated excerpts from actual source files** with Persian/English explanations and source path labels. No source repository links are published on the portfolio.
+
+Standalone safe sample-data demos:
+
+- [Loomera project demo](https://alireza-portfolio.alirezaanari117.workers.dev/demo/loomera): appointment-slot conflict checks from the sandbox API, sample Loomi assistant and bot interface.
+- [Velo project demo](https://alireza-portfolio.alirezaanari117.workers.dev/demo/velo): guest/premium, time credits, reward controls and simulated connection state. **No VPN tunnel**.
+- [Haniel Gold project demo](https://alireza-portfolio.alirezaanari117.workers.dev/demo/haniel-gold): product imagery and sample pricing via isolated API. **Not a live quote**.
+
+**New sources:** `showcase-v2.html` (design/template), `showcase-v2.js` (bilingual page and interactive product demos), `showcase-v2-data.json` (nontechnical stories, labeled images and original curated code snippets). The previous `index.html` remains for 15 feature-specific URLs (backwards compatibility), using the existing `advanced-demos.js` and `showcase-api-worker.js`.
+
+Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
+
 ## Published feature demos
 
 - [لومی؛ دستیار هوشمند](https://alireza-portfolio.alirezaanari117.workers.dev/features/loomi) — Loomera
