@@ -26,6 +26,18 @@ The original Haniel Gold storefront already embeds its own matching font. Code e
 
 Cloudflare Worker **serves the font CSS itself**; editing this repository alone does not redeploy Worker scripts. `showcase-v2.html`, `authentic-loomera.html` and `index.html` include the font CSS link. The Velo sandbox page's link is applied in the deployed Worker presentation layer. There is no change to the executable original Python or JavaScript project modules.
 
+## Client conversion improvements — 2026-10-24
+
+- The home hero now explains three services (Backend/API, Bots/Automation, Product Development) rather than using internal wording about source links.
+- Added three service-path cards so a visitor can quickly identify the kind of work they need.
+- Added a **local-only project brief builder** on the home page: select a work type, optionally describe the need, generate a ready-to-copy Persian/English message, and copy it for LinkedIn. Nothing is submitted automatically or sent to any server.
+- Added search to the 15-item feature catalog. Search indexes both Persian and English feature names plus slugs, so queries such as OTP, bot and booking find the relevant standalone page.
+- The feature catalog explicitly explains that those individual feature demos are isolated simulations, not live production integrations.
+- The first HTML response now includes the service cards and feature links as a no-JavaScript fallback; homepage metadata has also been updated for backend/API/automation search intent.
+- Persian UI uses the supplied YekanBakh4 ProPlus FaNum regular, semibold and bold webfont faces. The embedded WOFF2 payloads were compared against the uploaded archive by file size and base64 prefix/suffix; all three match exactly. The font is served through the Worker CSS route, not checked into the public source repository. Monospace is retained for code samples and technical labels.
+
+**QA:** browser automation verified the new hero and three service cards, service-card-to-contact preselection, generated message and copy action, feature-search filtering, project details with four gallery images/three real-code excerpts, and both real-source Loomera demo links. OTP search initially revealed that search only matched visible Persian labels; the index now includes each feature's English name and slug as well.
+
 ## Project demos now execute original source (2026-10-24)
 
 Earlier handcrafted `/demo/:slug` project simulations have been replaced. Those legacy URLs now redirect to actual isolated source-backed project slices. Do **not** market the earlier local-only feature simulations as the original application.
