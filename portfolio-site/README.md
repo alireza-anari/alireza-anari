@@ -56,6 +56,24 @@ Additionally, the home page includes an optional, locally composed project brief
 - The contact composer selects a suitable project category and includes the originating demo/project URL in the locally assembled message. The customer manually copies the text and contacts the engineer through LinkedIn. **The site does not collect or send submitted leads**; do not imply that clicking compose has sent a message.
 - Persian and English display text are supported. The underlying sample feature functionality remains intentionally limited and honest about pre-launch status.
 
+## Extended server-backed feature catalog (October 2026)
+
+Seven additional feature showcases now use isolated Cloudflare Worker POST endpoints and show request/response traces:
+
+| Route | Demonstration | Important boundary |
+| --- | --- | --- |
+| `POST /api/showcase/discounts` | Code validation, minimum subtotal, discount caps, explicit error responses | No real purchases or transactions |
+| `POST /api/showcase/notifications` | Event templates, roles, channels and opt-out suppression | No SMS, Bale or other messages sent |
+| `POST /api/showcase/analytics` | Aggregation and trend series by sample period | Fixed synthetic data, no real analytics |
+| `POST /api/showcase/gold-pricing` | Weight × fictional base rate plus illustrative labor | No verified market rate, taxes, margin or selling price |
+| `POST /api/showcase/role-dashboards` | Role-scoped views and a sample HTTP 403 denial | Policy simulation, not actual user authentication |
+| `POST /api/showcase/quick-links` | Sample direct-booking paths and attribution labels | No live booking links or scannable QR codes |
+| `POST /api/showcase/payment-states` | Allowed transitions and HTTP 409 for invalid order | Stateless scenario, no funds moved or payment recorded |
+
+The existing four demos (`loomi`, `bot`, `booking`, `otp`) remain in service, giving **11 API-backed showcase concepts across 15 feature pages**. Advanced feature UI lives in `advanced-demos.js`, served at `/assets/advanced-demos.js`. The other feature pages use local-only interactive sample scenarios. Both styles are clearly labeled as nonproduction.
+
+Structured metadata includes WebSite/CreativeWork JSON-LD and per-page Open Graph metadata, with appropriate product imagery for selected case studies. Scripts are dependency-free; images load lazily. Social sharing and sitemap URLs point to the portfolio, never to source repositories.
+
 ## Demo boundaries
 
 All interactive demos are independently implemented in client-side JavaScript, using **fictional data and illustrative flows**. They are **not connected** to the original products, live LLM inference, messaging providers, SMS, payments, real VPN connections or operational databases. Some underlying product modules require deployment configuration or additional release readiness work. The portfolio describes capabilities without claiming that unfinished products are production-ready.
