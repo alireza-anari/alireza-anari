@@ -18,6 +18,14 @@ Standalone safe sample-data demos:
 
 Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
 
+## Persian typography — supplied YekanBakh4 ProPlus
+
+The portfolio uses the owner's supplied **YekanBakh4 ProPlus / FaNum** font family with the 400, 600 and 700 weights for Persian headings, body text, forms and buttons. To avoid redundant font files, the same embedded WOFF2 webfont faces already present in Haniel Gold's own `frontend/styles.css` are reused for the other portfolio pages through a cached stylesheet at `/assets/fonts/yekanbakh4-proplus-fanum.v1.css`. The font-family names, WOFF2 headers and original archive samples have been checked against the provided ZIP.
+
+The original Haniel Gold storefront already embeds its own matching font. Code examples and technical monospace labels preserve monospace; English headings keep the Latin UI fallback. The font is not offered as a standalone download, and no font binaries are linked to the user.
+
+Cloudflare Worker **serves the font CSS itself**; editing this repository alone does not redeploy Worker scripts. `showcase-v2.html`, `authentic-loomera.html` and `index.html` include the font CSS link. The Velo sandbox page's link is applied in the deployed Worker presentation layer. There is no change to the executable original Python or JavaScript project modules.
+
 ## Project demos now execute original source (2026-10-24)
 
 Earlier handcrafted `/demo/:slug` project simulations have been replaced. Those legacy URLs now redirect to actual isolated source-backed project slices. Do **not** market the earlier local-only feature simulations as the original application.
