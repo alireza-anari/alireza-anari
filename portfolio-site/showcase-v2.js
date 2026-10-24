@@ -62,6 +62,18 @@ const briefCopy=document.getElementById('brief-copy');
 if(briefCopy)briefCopy.addEventListener('click',async()=>{const output=document.getElementById('brief-output'),status=document.getElementById('brief-status');try{await navigator.clipboard.writeText(output.value);status.textContent=txt('متن کپی شد ✓','Message copied ✓')}catch(e){output.focus();output.select();status.textContent=txt('متن انتخاب شد؛ برای کپی از Ctrl+C استفاده کنید.','Text selected; use Ctrl+C to copy.')}});
 const search=document.getElementById('feature-search');
 if(search)search.addEventListener('input',()=>{const q=search.value.trim().toLocaleLowerCase();let count=0;document.querySelectorAll('#feature-links a').forEach(a=>{const match=(a.dataset.search||a.textContent).toLocaleLowerCase().includes(q);a.hidden=!match;if(match)count++});const el=document.getElementById('feature-count');if(el)el.textContent=state.lang==='fa'?count+' قابلیت':count+' features'});
+const params=new URLSearchParams(location.search),featureSlug=params.get('feature'),projectSlug=params.get('project');
+if(route==='home'&&(featureSlug||projectSlug)){
+const select=document.getElementById('brief-type'),area=document.getElementById('brief-need'),status=document.getElementById('brief-status');
+const feature=data.features.find(f=>f.slug===featureSlug),projectNames={loomera:'Loomera',velo:'Velo','haniel-gold':'Haniel Gold'};
+const kinds={'loomi':'bots','telegram-bot':'bots','bale-bot':'bots','otp-auth':'backend','booking':'booking','quick-links':'booking','role-dashboards':'feature','notifications':'feature','payment-states':'feature','analytics':'feature','discovery':'feature','discounts':'commerce','vpn-control':'feature','loyalty':'feature','gold-pricing':'commerce'};
+const projectKinds={loomera:'booking',velo:'feature','haniel-gold':'commerce'};
+if(select)select.value=feature?(kinds[featureSlug]||'other'):(projectKinds[projectSlug]||'other');
+if(area&&feature)area.value=txt('می‌خواهم قابلیت «'+localized(feature.name)+'» را متناسب با کسب‌وکارم پیاده‌سازی کنم.','I would like the '+localized(feature.name)+' capability adapted to my business.');
+if(area&&projectSlug&&!feature)area.value=txt('می‌خواهم درباره توسعه یا تکمیل پروژه‌ای شبیه '+(projectNames[projectSlug]||projectSlug)+' صحبت کنم.','I would like to discuss building or extending a project like '+(projectNames[projectSlug]||projectSlug)+'.');
+if(status)status.textContent=feature?txt('قابلیت انتخاب‌شده: '+localized(feature.name),'Selected capability: '+localized(feature.name)):txt('پروژه انتخاب‌شده: '+(projectNames[projectSlug]||projectSlug),'Selected project: '+(projectNames[projectSlug]||projectSlug));
+const contactArea=document.getElementById('contact');if(contactArea)contactArea.scrollIntoView({behavior:'smooth',block:'start'});
+}
 }
 async function server(endpoint,body){const c=new AbortController(),timer=setTimeout(()=>c.abort(),8500);try{const response=await fetch('/api/showcase/'+endpoint,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...body,language:state.lang}),signal:c.signal,cache:'no-store'});return{status:response.status,...await response.json()}}catch(e){return{reply:txt('سرور آزمایشی پاسخ نداد؛ دوباره امتحان کنید.','Demo server unavailable; retry.'),status:0}}finally{clearTimeout(timer)}}
 function output(message){let el=document.getElementById('demo-result');if(el)el.textContent=message}
