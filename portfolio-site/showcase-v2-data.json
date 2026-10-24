@@ -1,0 +1,490 @@
+{
+  "projects": {
+    "loomera": {
+      "category": "BOOKING PLATFORM",
+      "name": {
+        "fa": "Loomera | مدیریت و رزرو خدمات",
+        "en": "Loomera | Service Booking Platform"
+      },
+      "oneLiner": {
+        "fa": "یک سامانه برای رزرو نوبت، مدیریت مشتری و هماهنگی کار سالن‌های خدماتی.",
+        "en": "A system for appointment booking, customer management and salon operations."
+      },
+      "intro": {
+        "fa": "لومرا کمک می‌کند مشتری راحت‌تر نوبت بگیرد و مجموعه خدماتی، تقویم، متخصص‌ها و درخواست‌های روزانه را از یک جا مدیریت کند.",
+        "en": "Loomera helps customers find appointments and service businesses manage bookings, staff and everyday operations."
+      },
+      "story": {
+        "fa": "فرض کنید یک سالن چند متخصص، چندین خدمت و ده‌ها درخواست روزانه دارد. هماهنگی دستی باعث تداخل ساعت‌ها و تماس‌های مکرر می‌شود. لومرا برای ساده‌کردن همین مسیر طراحی شده: مشتری خدمت و زمان دلخواه را انتخاب می‌کند و بخش مدیریت، برنامه نوبت‌ها، پیام‌ها و وضعیت خدمات را می‌بیند. دستیار لومی و ربات‌های پیام‌رسان هم هرکدام یک ماژول مستقل‌اند.",
+        "en": "Imagine a salon coordinating multiple specialists, services and appointment requests. Manual planning leads to double bookings and constant phone calls. Loomera introduces guided customer booking, staff calendars, business oversight and optional assistant/bot modules."
+      },
+      "problem": {
+        "fa": "رزروها ممکن است با هم تداخل داشته باشند، پیام‌ها بین کارکنان گم شوند و مشتری نداند چه ساعتی در دسترس است.",
+        "en": "Schedules can conflict, messages may get lost between team members and customers cannot easily see available times."
+      },
+      "solution": {
+        "fa": "موتور رزرو با بررسی ظرفیت، پنل‌های مجزا برای هر نقش، اعلان‌ها و قابلیت‌های ارتباط با مشتری.",
+        "en": "Conflict-aware scheduling, separate role dashboards, notifications and customer communication modules."
+      },
+      "demoIntro": {
+        "fa": "در نسخه آزمایشی می‌توانید خدمت و ساعت رزرو کنید، سؤال‌هایی از لومی بپرسید یا عملکرد منوی ربات را ببینید. همه اطلاعات ساختگی است.",
+        "en": "Try booking a sample slot, asking Loomi a question or exploring the bot menu. Everything uses fictional data."
+      },
+      "galleryNote": {
+        "fa": "یک نمای منتخب از رابط پیش‌انتشار و چند تصویر رابط که در خود پروژه استفاده شده‌اند؛ این تصاویر به معنی عمومی و آماده‌بودن محصول نیستند.",
+        "en": "A selected pre-launch UI overview plus real visual assets used inside the project. They do not indicate a publicly launched service."
+      },
+      "pills": [
+        {
+          "fa": "مناسب کسب‌وکار خدماتی",
+          "en": "For service businesses"
+        },
+        {
+          "fa": "رزرو و تقویم",
+          "en": "Booking & calendars"
+        },
+        {
+          "fa": "دستیار و ربات",
+          "en": "Assistant & bots"
+        }
+      ],
+      "featureSlugs": [
+        "loomi",
+        "booking",
+        "telegram-bot",
+        "bale-bot",
+        "role-dashboards",
+        "notifications"
+      ],
+      "gallery": [
+        {
+          "key": "loomera-showcase",
+          "label": {
+            "fa": "نمای منتخب رابط محصول (پیش‌انتشار)",
+            "en": "Selected product interface (pre-launch)"
+          }
+        },
+        {
+          "key": "loomera-customer",
+          "label": {
+            "fa": "تصویر رابط بخش مشتری",
+            "en": "Customer-side interface artwork"
+          }
+        },
+        {
+          "key": "loomera-manager",
+          "label": {
+            "fa": "تصویر رابط بخش مدیر",
+            "en": "Manager-side interface artwork"
+          }
+        },
+        {
+          "key": "loomera-stylist",
+          "label": {
+            "fa": "تصویر رابط بخش متخصص",
+            "en": "Specialist-side interface artwork"
+          }
+        }
+      ],
+      "snippets": [
+        {
+          "file": "apps/lumi/policy.py",
+          "name": "check",
+          "title": {
+            "fa": "اجرا فقط با مجوز معتبر",
+            "en": "Permission checks before execution"
+          },
+          "why": {
+            "fa": "قبل از اجرای هر ابزارِ دستیار هوشمند، ورود کاربر، نقش او و تأیید عملیات حساس بررسی می‌شود. این یعنی هوش مصنوعی به تنهایی مجاز به انجام هر کاری نیست.",
+            "en": "Every assistant tool call checks authentication, roles and explicit confirmation. AI cannot freely trigger sensitive actions."
+          },
+          "code": "    def check(self, context: LumiContext, *, confirmed: bool = False) -> None:\n        if not self.beta_enabled:\n            raise ToolPolicyError(\"این ابزار در نسخه بتا فعال نیست.\")\n        if self.requires_auth and not context.authenticated:\n            raise ToolAuthenticationRequired(\"برای استفاده از این ابزار باید وارد حساب شوی.\")\n        if self.allowed_roles and not (set(context.roles) & set(self.allowed_roles)):\n            raise ToolRoleDenied(\"نقش فعلی اجازه استفاده از این ابزار را ندارد.\")\n        if self.requires_confirmation and not confirmed:\n            raise ToolConfirmationRequired(\"این عملیات قبل از اجرا به تأیید صریح کاربر نیاز دارد.\")",
+          "language": "Python"
+        },
+        {
+          "file": "apps/lumi/context.py",
+          "name": "model_dict",
+          "title": {
+            "fa": "ارسال حداقل اطلاعات به مدل هوش مصنوعی",
+            "en": "Minimizing data sent to AI"
+          },
+          "why": {
+            "fa": "اطلاعات شناسایی کاربر، شناسه نشست و درخواست خام به مدل ارسال نمی‌شوند؛ فقط زمینه لازم برای فهم سؤال منتقل می‌شود.",
+            "en": "Identifiers and raw request objects are excluded; only the minimum safe context is prepared for AI intent classification."
+          },
+          "code": "    def model_dict(self) -> dict[str, Any]:\n        \"\"\"Return the minimum non-identifying context an intent model may see.\n\n        User/session IDs, request objects, page URLs and arbitrary metadata are\n        intentionally excluded. Scope IDs stay server-side and are injected by\n        the orchestrator after model classification.\n        \"\"\"\n        metadata = self.metadata if isinstance(self.metadata, Mapping) else {}\n        return {\n            \"authenticated\": self.authenticated,\n            \"roles\": sorted(self.roles),\n            \"primary_role\": self.primary_role,\n            \"channel\": self.channel,\n            \"locale\": self.locale,\n            \"scope_type\": str(metadata.get(\"scope_type\") or \"\")[:32],\n            \"has_scope\": bool(metadata.get(\"scope_type\")),\n            \"reference_date\": str(metadata.get(\"reference_date\") or \"\")[:10],\n        }",
+          "language": "Python"
+        },
+        {
+          "file": "apps/orders/test_qa_booking_regressions.py",
+          "name": "test_paused_salon_membership_is_rejected_by_final_booking_validation",
+          "title": {
+            "fa": "تست جلوگیری از رزرو اشتباه",
+            "en": "Regression test for invalid bookings"
+          },
+          "why": {
+            "fa": "این تست بررسی می‌کند که وقتی عضویت متخصص غیرفعال است، زمان آزاد نمایش داده نشود و رزرو نهایی نیز رد شود؛ سپس با فعال‌شدن عضویت امکان رزرو برگردد.",
+            "en": "A regression test verifies paused staff cannot receive bookings and that restoring status restores legitimate availability."
+          },
+          "code": "    def test_paused_salon_membership_is_rejected_by_final_booking_validation(self):\n        salon, stylist, service = self._context()\n        date_value = timezone.localdate() + timedelta(days=2)\n        self.add_schedule(\n            stylist=stylist,\n            salon=salon,\n            service=service,\n            date_value=date_value,\n            start=time(9, 0),\n            end=time(12, 0),\n        )\n        membership = SalonMembership.objects.create(\n            salon=salon,\n            stylist=stylist,\n            status=SalonMembershipStatus.PAUSED,\n        )\n\n        self.assertEqual(\n            get_available_slots_for_service(\n                salon=salon,\n                stylist=stylist,\n                service=service,\n                date_value=date_value,\n            ),\n            [],\n        )\n\n        with self.assertRaises(ValidationError):\n            resolve_booking_sequence(\n                salon=salon,\n                stylist_selections=self._selection(stylist, service),\n                datetime_selections=self._datetime_selection(stylist, service),\n            )\n\n        membership.status = SalonMembershipStatus.ACTIVE\n        membership.save(update_fields=[\"status\"])\n        resolved = resolve_booking_sequence(\n            salon=salon,\n            stylist_selections=self._selection(stylist, service),\n            datetime_selections=self._datetime_selection(stylist, service),\n        )\n        self.assertEqual(resolved[0].stylist_id if hasattr(resolved[0], \"stylist_id\") else resolved[0].stylist.pk, stylist.pk)",
+          "language": "Python"
+        }
+      ]
+    },
+    "velo": {
+      "category": "MOBILE + API",
+      "name": {
+        "fa": "Velo | اپلیکیشن و مدیریت اتصال",
+        "en": "Velo | Mobile & Connection Management"
+      },
+      "oneLiner": {
+        "fa": "اپلیکیشن اندرویدی همراه با بک‌اند برای مدیریت حساب، اعتبار، اتصال و پاداش.",
+        "en": "An Android app and backend for account, credits, connectivity and reward flows."
+      },
+      "intro": {
+        "fa": "ولو یک محصول موبایلی است که در آن حالت مهمان، اشتراک ویژه، اعتبار زمانی و وضعیت اتصال از طریق اپلیکیشن و سرور مدیریت می‌شود.",
+        "en": "Velo is a mobile-oriented system for guest access, paid plans, time credits and connection-state management."
+      },
+      "story": {
+        "fa": "کاربر باید بتواند وارد برنامه شود، زمان باقی‌مانده را ببیند، بین حالت عادی و ویژه جابه‌جا شود و بداند وضعیت اتصال چیست. سمت سرور هم مدیریت نشست‌ها، اعتبار و پاداش‌ها مطرح است. این پروژه ترکیبی از اپ اندروید Kotlin و بک‌اند FastAPI است و هنوز تمام کارهای انتشار نهایی تکمیل نشده‌اند.",
+        "en": "Users can view remaining credits, switch between guest and premium modes and understand session state. The backend manages sessions, entitlements and rewards. The product combines Kotlin Android with FastAPI; final release work is ongoing."
+      },
+      "problem": {
+        "fa": "مدیریت اشتراک، اعتبار و نشست‌های متغیر در اپ موبایل پیچیده است و باید حتی هنگام قطع ارتباط رفتار قابل پیش‌بینی داشته باشد.",
+        "en": "Subscription, credit and session logic is tricky on mobile and needs predictable handling even when connectivity changes."
+      },
+      "solution": {
+        "fa": "طراحی API برای نشست‌ها و اعتبار، لایه امنیت حساب کاربری، قواعد پاداش و تجربه کاربری موبایل.",
+        "en": "APIs for sessions and credits, account security, reward rules and mobile-focused UI."
+      },
+      "demoIntro": {
+        "fa": "در دموی مستقل می‌توانید حالت مهمان و ویژه، زمان جایزه و وضعیت اتصال را تغییر دهید؛ VPN واقعی روشن نمی‌شود.",
+        "en": "Try guest/premium modes, reward credits and simulated connection state. No real VPN tunnel starts."
+      },
+      "galleryNote": {
+        "fa": "این تصاویر ماکاپ طراحی و دارایی‌های خود اپ هستند؛ اسکرین‌شات نسخه منتشرشده محسوب نمی‌شوند.",
+        "en": "These are original design mockups and app assets, not screenshots from a released application."
+      },
+      "pills": [
+        {
+          "fa": "Android و Kotlin",
+          "en": "Android & Kotlin"
+        },
+        {
+          "fa": "بک‌اند FastAPI",
+          "en": "FastAPI backend"
+        },
+        {
+          "fa": "حساب و اعتبار",
+          "en": "Accounts & credits"
+        }
+      ],
+      "featureSlugs": [
+        "vpn-control",
+        "loyalty",
+        "otp-auth"
+      ],
+      "gallery": [
+        {
+          "key": "velo-core",
+          "label": {
+            "fa": "ماکاپ طراحی تجربه اصلی اپلیکیشن",
+            "en": "Main app design mockup"
+          }
+        },
+        {
+          "key": "velo-board",
+          "label": {
+            "fa": "برد هویت بصری و طراحی Velo",
+            "en": "Velo design and brand board"
+          }
+        },
+        {
+          "key": "velo-logo",
+          "label": {
+            "fa": "لوگو و دارایی تصویری اپ",
+            "en": "Actual app logo asset"
+          }
+        }
+      ],
+      "snippets": [
+        {
+          "file": "backend/app/security.py",
+          "name": "hash_value",
+          "title": {
+            "fa": "نگهداری امن داده‌های حساس",
+            "en": "Hashing sensitive values safely"
+          },
+          "why": {
+            "fa": "برای مقدار حساس از نمک تصادفی و PBKDF2 استفاده شده است؛ مقدار خام به شکل ساده ذخیره نمی‌شود.",
+            "en": "A random salt and PBKDF2 are used to hash sensitive values instead of storing them in plaintext."
+          },
+          "code": "def hash_value(value: str) -> str:\n    salt = secrets.token_bytes(16)\n    digest = hashlib.pbkdf2_hmac(\"sha256\", value.encode(), salt, 120_000)\n    return f\"{_b64e(salt)}.{_b64e(digest)}\"",
+          "language": "Python"
+        },
+        {
+          "file": "backend/app/security.py",
+          "name": "verify_value",
+          "title": {
+            "fa": "مقایسه بدون نشت زمانیِ واضح",
+            "en": "Constant-time hash comparison"
+          },
+          "why": {
+            "fa": "اعتبارسنجی به‌جای مقایسه ساده رشته‌ها از compare_digest استفاده می‌کند؛ نمونه‌ای از توجه به جزئیات امنیتی.",
+            "en": "Verification uses constant-time digest comparison rather than an ordinary string comparison."
+          },
+          "code": "def verify_value(value: str, encoded: str) -> bool:\n    try:\n        salt_text, digest_text = encoded.split(\".\", 1)\n        salt = _b64d(salt_text)\n        expected = _b64d(digest_text)\n    except Exception:\n        return False\n    actual = hashlib.pbkdf2_hmac(\"sha256\", value.encode(), salt, 120_000)\n    return hmac.compare_digest(actual, expected)",
+          "language": "Python"
+        },
+        {
+          "file": "backend/app/services/referrals.py",
+          "name": "record_referral_usage",
+          "title": {
+            "fa": "جلوگیری از دریافت تکراری پاداش",
+            "en": "Preventing duplicate reward payouts"
+          },
+          "why": {
+            "fa": "پاداش معرفی، محدود به روزهای مصرف معتبر است و برای یک روز تکرار نمی‌شود؛ خطای یکتایی پایگاه داده هم کنترل شده است.",
+            "en": "Referral rewards require meaningful usage, enforce day-based uniqueness and handle database conflicts."
+          },
+          "code": "def record_referral_usage(db: Session, session: VpnSession) -> None:\n    # A real usage day requires at least five minutes of VPN time.\n    if session.consumed_seconds < 300:\n        return\n    referral = db.scalar(select(Referral).where(Referral.invited_device_id == session.device_id))\n    if not referral:\n        return\n    # Only first 7 distinct usage days after installation are rewarded.\n    if referral.rewarded_days >= 7:\n        return\n    today = local_date()\n    existing = db.scalar(\n        select(ReferralDailyReward).where(\n            ReferralDailyReward.referral_id == referral.id,\n            ReferralDailyReward.local_date == today,\n        )\n    )\n    if existing:\n        return\n    hearts = int(get_json(db, \"referral_daily_hearts\", 5))\n    reward = ReferralDailyReward(referral_id=referral.id, local_date=today, hearts=hearts)\n    db.add(reward)\n    if hearts > 0:\n        db.add(HeartLedger(user_id=referral.inviter_user_id, amount=hearts, reason=\"referral_daily_use\", reference=f\"referral:{referral.id}:{today}\"))\n    referral.rewarded_days += 1\n    # Optional completion bonus on the seventh rewarded day.\n    if referral.rewarded_days == 7:\n        bonus = int(get_json(db, \"referral_day7_bonus_hearts\", 5))\n        if bonus > 0:\n            db.add(HeartLedger(user_id=referral.inviter_user_id, amount=bonus, reason=\"referral_7day_bonus\", reference=f\"referral:{referral.id}\"))\n    try:\n        db.commit()\n    except IntegrityError:\n        db.rollback()",
+          "language": "Python"
+        }
+      ]
+    },
+    "haniel-gold": {
+      "category": "ONLINE COMMERCE",
+      "name": {
+        "fa": "Haniel Gold | فروشگاه و قیمت‌گذاری طلا",
+        "en": "Haniel Gold | Storefront & Pricing"
+      },
+      "oneLiner": {
+        "fa": "فروشگاه آنلاین با محاسبه قیمت بر اساس وزن و اجرت، و کنترل اعتبار نرخ.",
+        "en": "Online storefront with weight-based pricing and safeguards for rate validity."
+      },
+      "intro": {
+        "fa": "هانیل گلد نمونه یک فروشگاه فارسی است که قیمت هر محصول را باید با قواعد مشخص، وزن، عیار و نرخ تأییدشده محاسبه کند.",
+        "en": "Haniel Gold is a Persian storefront where pricing depends on product weight, purity and approved rate policies."
+      },
+      "story": {
+        "fa": "در فروشگاه طلا، نشان‌دادن یک قیمت ثابت کافی نیست؛ نرخ بازار تغییر می‌کند و اجرت، سود و مالیات هم نقش دارند. برای این محصول رابط فروشگاهی و بک‌اند Django طراحی شده تا نرخ‌ها اعتبارسنجی شوند و سیاست‌های قیمت‌گذاری قابل کنترل باشند. پروژه در مرحله استیجینگ است و فروش یا پرداخت واقعی این دمو فعال نیست.",
+        "en": "Gold pricing cannot rely on a static number. Rates change, while labor, margin and taxes also matter. The project includes a storefront and Django backend designed to validate rate feeds and apply reviewed policies. It is staging-oriented, with no live sales or payments in this demo."
+      },
+      "problem": {
+        "fa": "قیمت اشتباه یا نرخ قدیمی می‌تواند باعث تصمیم نادرست مشتری شود، و فرمول قیمت نباید مبهم باشد.",
+        "en": "Stale rates or opaque calculations can mislead customers and create serious pricing errors."
+      },
+      "solution": {
+        "fa": "بررسی تازگی نرخ و واحد پول، محاسبه تفکیکی اجزای قیمت و کنترل استفاده از نرخ‌هایی که جهش غیرعادی دارند.",
+        "en": "Validate rate freshness and currency units, separate calculation components and flag unusual rate movements."
+      },
+      "demoIntro": {
+        "fa": "یکی از محصولات تصویری را انتخاب و با یک نرخ فرضی قیمت نمونه را محاسبه کنید. عدد به‌دست‌آمده قیمت بازار یا پیشنهاد فروش نیست.",
+        "en": "Choose a sample product and calculate an illustrative price using a fictional rate. It is not a market quote or selling price."
+      },
+      "galleryNote": {
+        "fa": "این‌ها تصاویر واقعی استفاده‌شده در فرانت‌اند پروژه هستند، نه اسکرین‌شات سفارش واقعی یا فروشگاه فعال.",
+        "en": "These are actual frontend visual assets, not screenshots of real orders or an operating store."
+      },
+      "pills": [
+        {
+          "fa": "فروشگاه فارسی",
+          "en": "Persian storefront"
+        },
+        {
+          "fa": "Django API",
+          "en": "Django APIs"
+        },
+        {
+          "fa": "قیمت‌گذاری قابل کنترل",
+          "en": "Controlled pricing"
+        }
+      ],
+      "featureSlugs": [
+        "gold-pricing",
+        "discounts"
+      ],
+      "gallery": [
+        {
+          "key": "haniel-hero",
+          "label": {
+            "fa": "تصویر اصلی استفاده‌شده در فرانت‌اند فروشگاه",
+            "en": "Actual storefront hero artwork"
+          }
+        },
+        {
+          "key": "haniel-necklace",
+          "label": {
+            "fa": "تصویر دسته زیورآلات در پروژه",
+            "en": "Jewelry imagery used by the project"
+          }
+        },
+        {
+          "key": "haniel-earring",
+          "label": {
+            "fa": "دارایی تصویری گوشواره برای ویترین",
+            "en": "Earring gallery artwork from the frontend"
+          }
+        },
+        {
+          "key": "haniel-gallery",
+          "label": {
+            "fa": "تصویر گالری فروشگاهی پروژه",
+            "en": "Store gallery visual asset"
+          }
+        }
+      ],
+      "snippets": [
+        {
+          "file": "backend/commerce/rate_feed.py",
+          "name": "parse_observation",
+          "title": {
+            "fa": "رد کردن نرخ نامعتبر یا تاریخ‌گذشته",
+            "en": "Rejecting stale or invalid market rates"
+          },
+          "why": {
+            "fa": "قبل از استفاده از نرخ، واحد پول، فرمت عددی و زمان ثبت منبع بررسی می‌شود تا رقم قدیمی یا نامعتبر مبنای محاسبه نشود.",
+            "en": "The rate feed validates units, numeric formats, timezone-aware timestamps and freshness before accepting an observation."
+          },
+          "code": "def parse_observation(data,*,price_path,time_path,unit,now=None,max_age_seconds=2400):\n    if unit not in ('TOMAN','RIAL'):\n        raise FeedError('واحد رسمی سرویس باید به‌صراحت TOMAN یا RIAL تعیین شود.')\n    rate=to_decimal(at_path(data,price_path))\n    rate=rate/Decimal('10') if unit=='RIAL' else rate\n    if rate.as_tuple().exponent < -2:\n        raise FeedError('مقدار نرخ بیش از دو رقم اعشار دارد.')\n    rate=rate.quantize(Decimal('.01'))\n    raw_time=at_path(data,time_path)\n    if not isinstance(raw_time,str):\n        raise FeedError('زمان ثبت نرخ باید ISO 8601 دارای منطقه زمانی باشد.')\n    try:\n        observed=datetime.fromisoformat(raw_time.replace('Z','+00:00'))\n    except ValueError as exc:\n        raise FeedError('زمان ثبت نرخ ISO 8601 معتبر نیست.') from exc\n    if observed.tzinfo is None or observed.utcoffset() is None:\n        raise FeedError('زمان نرخ باید منطقه زمانی مشخص داشته باشد.')\n    now=now or datetime.now(timezone.utc)\n    if observed>now+timedelta(minutes=2):\n        raise FeedError('زمان نرخ از آینده است.')\n    if now-observed>timedelta(seconds=max_age_seconds):\n        raise FeedError('زمان نرخ منقضی یا قدیمی است.')\n    return Observation(toman_per_gram=rate,observed_at=observed)",
+          "language": "Python"
+        },
+        {
+          "file": "backend/commerce/services.py",
+          "name": "calculate_line",
+          "title": {
+            "fa": "تفکیک دقیق اجزای قیمت",
+            "en": "Transparent price calculation"
+          },
+          "why": {
+            "fa": "ارزش وزن، اجرت، سود و مالیات هر کدام جداگانه محاسبه می‌شوند؛ وجود نرخ با عیار اشتباه و تنظیمات ناقص نیز بررسی می‌شود.",
+            "en": "Material cost, labor, margin and tax are computed separately, with checks for inconsistent rates and incomplete policies."
+          },
+          "code": "def calculate_line(product,rate,policy):\n    \"\"\"PROPOSED formula. Only usable after human approval of PricingPolicy.\n\n    Raw = product weight * approved per-karat rate.\n    Labor = raw * workmanship% + fixed labor amount.\n    Profit = (raw + labor) * profit%.\n    Tax = (labor+profit)*reviewed tax% or zero if explicitly approved as none.\n    Rounded individually to whole toman; shipping applied per quote, not per item.\n    \"\"\"\n    if any(x is None for x in (product.weight_grams,product.karat,\n                                product.profit_percent,policy.tax_percent,policy.shipping_toman)) or not policy.tax_basis:\n        raise ServiceUnavailable('مشخصات قیمت‌گذاری یا هزینه ارسال هنوز تکمیل و تأیید نشده است.')\n    if rate.karat != product.karat:\n        raise Conflict('عیار نرخ و محصول مطابقت ندارد.')\n    raw=toman(product.weight_grams * rate.toman_per_gram)\n    if product.workmanship_percent is None and not product.workmanship_fixed_toman:\n        raise ServiceUnavailable('نوع اجرت (درصدی یا ثابت) تنظیم نشده است.')\n    labor=toman(raw * (product.workmanship_percent or Decimal('0')) / Decimal('100') + (product.workmanship_fixed_toman or Decimal('0')))\n    profit=toman((raw+labor)*product.profit_percent/Decimal('100'))\n    taxable = labor+profit if policy.tax_basis=='fee_profit' else Decimal(0)\n    tax=toman(taxable*policy.tax_percent/Decimal('100'))\n    return {'raw':raw,'labor':labor,'profit':profit,'tax':tax,'total':raw+labor+profit+tax}",
+          "language": "Python"
+        },
+        {
+          "file": "backend/tests/test_rate_service.py",
+          "name": "test_large_jump_blocks_quotes",
+          "title": {
+            "fa": "آزمون ایمنی تغییر شدید قیمت",
+            "en": "Test that sudden rate jumps block quotes"
+          },
+          "why": {
+            "fa": "یک تست واقعی تضمین می‌کند تغییر شدید نرخ، سیستم استعلام قیمت را متوقف کند تا قبل از تأیید انسانی از نرخ مشکوک استفاده نشود.",
+            "en": "A regression test verifies unusually large rate jumps pause quotes until a human review."
+          },
+          "code": "    def test_large_jump_blocks_quotes(self):\n        self.activate_first()\n        r=sync_gold_rate(observation=self.observation('11500000'))\n        self.assertEqual(r['status'],'rejected')\n        self.assertTrue(RateSyncState.objects.get(pk=1).blocked)\n        self.assertEqual(GoldRate.objects.get(active=True).toman_per_gram,Decimal('10000000'))\n        self.assertEqual(current_pricing_context()[2],'blocked')",
+          "language": "Python"
+        }
+      ]
+    }
+  },
+  "features": [
+    {
+      "slug": "loomi",
+      "name": {
+        "fa": "دستیار هوشمند لومی",
+        "en": "Loomi assistant"
+      }
+    },
+    {
+      "slug": "telegram-bot",
+      "name": {
+        "fa": "ربات تلگرام",
+        "en": "Telegram bot"
+      }
+    },
+    {
+      "slug": "bale-bot",
+      "name": {
+        "fa": "ربات بله",
+        "en": "Bale bot"
+      }
+    },
+    {
+      "slug": "otp-auth",
+      "name": {
+        "fa": "احراز هویت یک‌بارمصرف",
+        "en": "OTP authentication"
+      }
+    },
+    {
+      "slug": "booking",
+      "name": {
+        "fa": "سیستم رزرو",
+        "en": "Booking workflow"
+      }
+    },
+    {
+      "slug": "quick-links",
+      "name": {
+        "fa": "لینک رزرو مستقیم",
+        "en": "Booking links"
+      }
+    },
+    {
+      "slug": "role-dashboards",
+      "name": {
+        "fa": "داشبورد چندنقشی",
+        "en": "Role dashboards"
+      }
+    },
+    {
+      "slug": "notifications",
+      "name": {
+        "fa": "اعلان خودکار",
+        "en": "Notifications"
+      }
+    },
+    {
+      "slug": "payment-states",
+      "name": {
+        "fa": "وضعیت پرداخت",
+        "en": "Payment states"
+      }
+    },
+    {
+      "slug": "analytics",
+      "name": {
+        "fa": "گزارش‌گیری",
+        "en": "Analytics"
+      }
+    },
+    {
+      "slug": "discovery",
+      "name": {
+        "fa": "جست‌وجوی خدمات",
+        "en": "Service search"
+      }
+    },
+    {
+      "slug": "discounts",
+      "name": {
+        "fa": "کوپن تخفیف",
+        "en": "Discount coupons"
+      }
+    },
+    {
+      "slug": "vpn-control",
+      "name": {
+        "fa": "مدیریت اتصال",
+        "en": "Connection management"
+      }
+    },
+    {
+      "slug": "loyalty",
+      "name": {
+        "fa": "باشگاه مشتریان",
+        "en": "Rewards and loyalty"
+      }
+    },
+    {
+      "slug": "gold-pricing",
+      "name": {
+        "fa": "محاسبه قیمت طلا",
+        "en": "Gold pricing"
+      }
+    }
+  ]
+}
