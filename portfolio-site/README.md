@@ -1,4 +1,4 @@
-# Alireza Anari — Feature-first Portfolio
+# Alireza Anari — Project-first Portfolio
 
 **Live**: https://alireza-portfolio.alirezaanari117.workers.dev/
 
