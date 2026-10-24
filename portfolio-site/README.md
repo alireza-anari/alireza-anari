@@ -18,14 +18,23 @@ Standalone safe sample-data demos:
 
 Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
 
-## Persian typography — supplied YekanBakh4 ProPlus
+## Final launch audit — 2026-10-24
 
-The portfolio uses the owner's supplied **YekanBakh4 ProPlus / FaNum** font family with the 400, 600 and 700 weights for Persian headings, body text, forms and buttons. To avoid redundant font files, the same embedded WOFF2 webfont faces already present in Haniel Gold's own `frontend/styles.css` are reused for the other portfolio pages through a cached stylesheet at `/assets/fonts/yekanbakh4-proplus-fanum.v1.css`. The font-family names, WOFF2 headers and original archive samples have been checked against the provided ZIP.
+**Live site:** https://alireza-portfolio.alirezaanari117.workers.dev/
 
-The original Haniel Gold storefront already embeds its own matching font. Code examples and technical monospace labels preserve monospace; English headings keep the Latin UI fallback. The font is not offered as a standalone download, and no font binaries are linked to the user.
+The production Worker now serves the original source-backed project slices, the 15 separately shareable feature demos, the bilingual portfolio, and the locally generated project inquiry. No GitHub repository URL is displayed in the portfolio interface. Standalone feature pages remain clearly labeled simulations; the three project slices run specified original project modules. No payments, production accounts, real VPN tunnel, customer bookings or SMS services are connected.
 
-Cloudflare Worker **serves the font CSS itself**; editing this repository alone does not redeploy Worker scripts. `showcase-v2.html`, `authentic-loomera.html` and `index.html` include the font CSS link. The Velo sandbox page's link is applied in the deployed Worker presentation layer. There is no change to the executable original Python or JavaScript project modules.
+### Persian typography and performance
 
+The supplied YekanBakh4 ProPlus FaNum WOFF2 fonts (400 Regular, 600 SemiBold, 700 Bold) were verified byte-for-byte using SHA-256 against the provided ZIP. The initial CSS contained approximately 195 kB of embedded base64 font data. The production Worker now serves a compact ~2.5 kB CSS file at `/assets/fonts/yekanbakh4-proplus-fanum.v2.css` and three separately cached original WOFF2 weights at `/assets/fonts/yekanbakh4-{regular,semibold,bold}.woff2`. Browsers fetch only needed weights; the actual font bytes are unchanged. V2 CSS URLs were added in `showcase-v2.html`, `index.html`, `authentic-loomera.html` and `authentic-velo.html`. The original Haniel frontend has its own embedded font. The font binaries are not committed to the portfolio repository.
+
+### Final UI and accessibility hardening
+
+- Responsive navigation tightened down to 320px width: the mobile header shows the brand monogram, visible navigation links and language toggle without relying on the wide desktop wordmark.
+- Reduced-motion support was added to transitions/animated scroll.
+- Basic SSR/no-JavaScript fallback has project/service listings and an external LinkedIn contact link for all three project pages.
+- Each individual feature page has a shareable URL and a copy-link control. Request-similar feature links prefill the local brief form with the right work category and capability name.
+- Browser-backed interaction QA covers the project brief and copy action, feature search aliases, Loomera service selection, Velo security module and Haniel storefront frontend. The Worker source remains independent of the source repository (GitHub updates do not automatically redeploy it).
 ## Client conversion improvements — 2026-10-24
 
 - The home hero now explains three services (Backend/API, Bots/Automation, Product Development) rather than using internal wording about source links.
