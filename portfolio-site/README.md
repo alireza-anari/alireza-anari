@@ -42,6 +42,20 @@ Source for the API route logic is documented in `showcase-api-worker.js`. All AP
 
 Additionally, the home page includes an optional, locally composed project brief: users can describe the kind of work they need, preview a proposed message, and copy it. This runs in the browser and does not transmit the brief to a server.
 
+## Product case studies and visuals
+
+- `/projects/loomera`: engineering challenge, architectural approach, client use cases, related module demos and an approved pre-launch product UI showcase.
+- `/projects/velo`: mobile/backend engineering story and a **labeled design mockup**, not a released-app screenshot.
+- `/projects/haniel-gold`: rate-sensitive commerce engineering narrative with a clear staging/real-payment disclaimer and **no reused brand imagery**.
+- Two explicitly allowlisted `/media/project/:slug` endpoints fetch public, already-published media as same-origin images with long cache headers. Media is lazy-loaded, and visitors are not directed to source repositories. If origin media becomes unavailable, it must be replaced with independent approved assets; do not silently claim it remains online.
+
+## Feature-specific sales funnel
+
+- All standalone demos have a direct URL; each can be shared by copying the link, and feature pages include a WhatsApp sharing option.
+- A project's collaboration CTA goes to `/?project=<slug>#contact`. A feature's collaboration CTA goes to `/?feature=<slug>#contact`.
+- The contact composer selects a suitable project category and includes the originating demo/project URL in the locally assembled message. The customer manually copies the text and contacts the engineer through LinkedIn. **The site does not collect or send submitted leads**; do not imply that clicking compose has sent a message.
+- Persian and English display text are supported. The underlying sample feature functionality remains intentionally limited and honest about pre-launch status.
+
 ## Demo boundaries
 
 All interactive demos are independently implemented in client-side JavaScript, using **fictional data and illustrative flows**. They are **not connected** to the original products, live LLM inference, messaging providers, SMS, payments, real VPN connections or operational databases. Some underlying product modules require deployment configuration or additional release readiness work. The portfolio describes capabilities without claiming that unfinished products are production-ready.
