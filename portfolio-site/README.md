@@ -28,6 +28,20 @@ This portfolio is intentionally **client-facing and source-free**: no GitHub rep
 - [Velo — محصول Android و شبکه](https://alireza-portfolio.alirezaanari117.workers.dev/projects/velo)
 - [Haniel Gold — تجارت الکترونیک](https://alireza-portfolio.alirezaanari117.workers.dev/projects/haniel-gold)
 
+## Edge-backed interactive demonstrations
+
+Four important showcases now send real HTTP requests to an isolated Cloudflare Worker **demo API** with simulated, invented data. The relevant routes are:
+
+- `POST /api/showcase/loomi` — deterministic, public-read-only sample intent handling (no real LLM inference)
+- `POST /api/showcase/bot` — simulated Telegram/Bale role-based menus; no messages are sent
+- `POST /api/showcase/booking` — booking conflict check; busy time returns `HTTP 409`; no bookings are stored
+- `POST /api/showcase/otp` — fixed code `123456`; no OTP delivery, account or session is created
+- `GET /api/showcase/health` — stateless API health response
+
+Source for the API route logic is documented in `showcase-api-worker.js`. All API request and response bodies are sample-only, payload-size limited, and not intentionally persisted. This **demonstrates the HTTP interaction pattern, not the live product's backend**.
+
+Additionally, the home page includes an optional, locally composed project brief: users can describe the kind of work they need, preview a proposed message, and copy it. This runs in the browser and does not transmit the brief to a server.
+
 ## Demo boundaries
 
 All interactive demos are independently implemented in client-side JavaScript, using **fictional data and illustrative flows**. They are **not connected** to the original products, live LLM inference, messaging providers, SMS, payments, real VPN connections or operational databases. Some underlying product modules require deployment configuration or additional release readiness work. The portfolio describes capabilities without claiming that unfinished products are production-ready.
