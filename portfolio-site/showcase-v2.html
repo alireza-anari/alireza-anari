@@ -376,10 +376,100 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  .logo-copy small{font-size:8px}
  .menu-toggle{width:36px;height:38px;flex-basis:36px}
 }
+
+/* Client-friendly résumé; print cleanly to A4/PDF */
+.resume-page{padding-top:28px;padding-bottom:42px;max-width:1160px}
+.resume-back{display:inline-flex;margin-bottom:16px;font-size:12px}
+.resume-paper{background:#fffaf2;border:1px solid #e6d4b8;border-radius:23px;box-shadow:0 18px 46px #123a3210;overflow:hidden}
+.resume-header{display:flex;justify-content:space-between;align-items:end;gap:24px;padding:36px 40px 32px;background:linear-gradient(135deg,#faf0dd,#fffaf2);border-bottom:1px solid #e6d5be}
+.resume-header>div:first-child{max-width:780px}
+.resume-header h1{font-size:clamp(35px,4vw,49px);line-height:1.3;margin:12px 0 7px}
+.resume-role{color:#9d6a30;font-size:15px;font-weight:750;margin:0 0 13px}
+.resume-intro{max-width:730px;color:#50676a;font-size:13px;line-height:2.15;margin:0}
+.resume-actions{display:flex;flex-direction:column;gap:9px;flex:0 0 190px}
+.resume-actions .btn{width:100%;white-space:normal}
+.resume-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(230px,0.9fr);gap:0}
+.resume-main{padding:32px 36px 32px 40px}
+.resume-sidebar{background:#f4eada;border-inline-start:1px solid #e4d5c0;padding:32px 24px}
+.resume-section+.resume-section{margin-top:32px}
+.resume-section-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.resume-section-title span{font:700 12px/1 ui-monospace,monospace;color:#b27b3c;background:#f2dfc3;border-radius:8px;padding:9px}
+.resume-section-title h2{font-size:19px;margin:0;color:#103e41}
+.resume-project{border:1px solid #e5d5bf;border-radius:13px;padding:19px 20px;background:#fffdf9;break-inside:avoid}
+.resume-project+.resume-project{margin-top:10px}
+.resume-project-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.resume-project h3{font:750 17px/1.4 "Yekan Bakh FaNum",Tahoma,sans-serif;direction:ltr;text-align:start;color:#0e4547;margin:0}
+.resume-project-top>span{font-size:10px;color:#997347;border:1px solid #e6d0ae;background:#f9eddb;padding:3px 8px;border-radius:30px}
+.resume-project p{font-size:12px;line-height:2;color:#607174;margin:10px 0}
+.resume-tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.resume-tags span{font:500 10px/1.5 "Yekan Bakh FaNum",Tahoma,sans-serif;color:#446468;border-radius:7px;background:#edf2ee;padding:4px 8px;direction:ltr}
+.resume-project>a{color:#94602b;font-size:11px;font-weight:700;text-decoration:none}
+.resume-project>a:hover{text-decoration:underline}
+.resume-principles{display:grid;gap:9px}
+.resume-principles p{border-inline-start:3px solid #d39a4e;padding:3px 13px;margin:0;color:#586c6d;font-size:12px;line-height:2}
+.resume-skills{display:grid;gap:9px}
+.resume-skill{border-bottom:1px solid #dbc8ab;padding:0 0 9px;display:grid;gap:4px}
+.resume-skill strong{font-size:12px;color:#19484b;line-height:1.7;direction:ltr;text-align:start}
+.resume-skill span{font-size:11px;color:#6d7d7b;direction:ltr;text-align:start}
+.resume-availability p{font-size:12px;color:#586f70;line-height:2.05}
+.resume-contact{display:grid;gap:12px}
+.resume-contact a{font-size:11px;color:#0c5557;font-weight:700;text-decoration:none;border-bottom:1px solid #d7c4a5;padding-bottom:8px}
+.resume-contact a:hover{color:#9f6a30}
+.resume-help{font-size:11px;color:#71817f;margin:15px 0 0}
+@media(max-width:800px){
+ .resume-header{padding:26px;align-items:start;flex-direction:column}
+ .resume-actions{flex:0 0 auto;flex-direction:row;width:100%}
+ .resume-actions .btn{flex:1}
+ .resume-layout{grid-template-columns:1fr}
+ .resume-main{padding:26px}
+ .resume-sidebar{padding:26px;border-inline-start:0;border-top:1px solid #e4d5c0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ .resume-sidebar .resume-section{margin-top:0}
+ .resume-sidebar .resume-section:first-child{grid-row:span 2}
+}
+@media(max-width:520px){
+ .resume-page{padding-top:17px}
+ .resume-header{padding:22px 19px;gap:18px}
+ .resume-header h1{font-size:35px}
+ .resume-role{font-size:13px}
+ .resume-intro{font-size:12px}
+ .resume-actions{flex-direction:column}
+ .resume-main{padding:20px 15px}
+ .resume-sidebar{padding:20px 15px;grid-template-columns:1fr}
+ .resume-sidebar .resume-section:first-child{grid-row:auto}
+ .resume-section+.resume-section{margin-top:24px}
+ .resume-section-title h2{font-size:17px}
+ .resume-project{padding:15px 13px}
+ .resume-project-top{align-items:flex-start}
+ .resume-project-top>span{font-size:9px}
+}
+@page{size:A4;margin:12mm}
+@media print{
+ html,body{background:white!important;color:#17363b!important}
+ body:before,.top,.footer,.skip,.resume-back,.resume-actions,.resume-help,.image-modal{display:none!important}
+ .wrap.resume-page{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+ .resume-paper{box-shadow:none!important;border:none!important;border-radius:0!important;background:white!important}
+ .resume-header{background:#f6ede0!important;print-color-adjust:exact;-webkit-print-color-adjust:exact;padding:15px 18px!important;page-break-after:avoid;break-after:avoid}
+ .resume-header h1{font-size:28px!important;margin:5px 0!important}
+ .resume-role{font-size:11px!important;margin:4px 0!important}
+ .resume-intro{font-size:10px!important;line-height:1.75!important}
+ .resume-layout{grid-template-columns:minmax(0,1.65fr) minmax(0,0.92fr)!important}
+ .resume-main{padding:16px 14px!important}
+ .resume-sidebar{padding:16px 12px!important;display:block!important;border-top:0!important}
+ .resume-sidebar .resume-section{margin-bottom:12px!important}
+ .resume-project,.resume-section{break-inside:avoid;page-break-inside:avoid}
+ .resume-project{padding:10px 12px!important;margin-top:7px!important}
+ .resume-project p,.resume-principles p,.resume-skill strong,.resume-skill span,.resume-availability p{font-size:9px!important;line-height:1.6!important}
+ .resume-project h3{font-size:12px!important}
+ .resume-section-title{margin-bottom:7px!important}
+ .resume-section-title h2{font-size:13px!important}
+ .resume-section+.resume-section{margin-top:14px!important}
+ .resume-contact a{font-size:9px!important}
+ a{color:#0c4848!important}
+}
 </style>
 <link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css"></head><body>
 <a class="skip" href="#main">رفتن به محتوا</a>
-<header class="top"><div class="wrap top-in"><a class="logo" href="/" aria-label="خانه"><b>A</b><span class="logo-copy"><strong>علیرضا اناری</strong><small>توسعه‌دهنده نرم‌افزار</small></span></a><button class="menu-toggle" id="menu-toggle" type="button" aria-label="باز کردن منو" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button><nav id="site-nav"><a href="/#projects" id="nav-projects">پروژه‌ها</a><a href="/#service-options" id="nav-services">خدمات</a><a href="/#process" id="nav-process">مسیر همکاری</a><a href="/#about" id="nav-about">درباره من</a><a href="/#contact" id="nav-contact">تماس با من</a></nav><div class="actions"><button class="lang" id="language" type="button" aria-label="Switch language">EN</button><a class="btn btn-primary btn-small header-contact" href="/#contact" id="nav-start">شروع یک پروژه ↗</a></div></div></header>
+<header class="top"><div class="wrap top-in"><a class="logo" href="/" aria-label="خانه"><b>A</b><span class="logo-copy"><strong>علیرضا اناری</strong><small>توسعه‌دهنده نرم‌افزار</small></span></a><button class="menu-toggle" id="menu-toggle" type="button" aria-label="باز کردن منو" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button><nav id="site-nav"><a href="/#projects" id="nav-projects">پروژه‌ها</a><a href="/#service-options" id="nav-services">خدمات</a><a href="/#process" id="nav-process">مسیر همکاری</a><a href="/resume" id="nav-resume">رزومه</a><a href="/#about" id="nav-about">درباره من</a><a href="/#contact" id="nav-contact">تماس با من</a></nav><div class="actions"><button class="lang" id="language" type="button" aria-label="Switch language">EN</button><a class="btn btn-primary btn-small header-contact" href="/#contact" id="nav-start">شروع یک پروژه ↗</a></div></div></header>
 <main id="main">__SERVER_MAIN__</main>
 <footer class="footer"><div class="wrap footer-inner"><span>© 2026 Alireza Anari — Python / Django / Backend Engineering</span><span id="footer-text">نمونه‌کارها، دموهای مستقل و کدهای منتخب واقعی</span></div></footer>
 <dialog class="image-modal" id="image-modal"><div class="modal-header"><b id="modal-caption">نمای پروژه</b><button type="button" id="modal-close">بستن ✕</button></div><img id="modal-image" src="" alt=""></dialog>
