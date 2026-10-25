@@ -352,6 +352,30 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  .steps-grid article p{font-size:11px}
  .brief-points{grid-template-columns:1fr}
 }
+
+/* Mobile header alignment fix: brand right, menu center, language left */
+@media(max-width:980px){
+ .top-in{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto;justify-content:initial;align-items:center;gap:9px;height:68px}
+ .logo{min-width:0;max-width:100%;gap:8px;white-space:nowrap}
+ .logo b{flex:0 0 36px;width:36px;height:36px;font-size:31px}
+ .logo-copy{min-width:0}
+ .logo-copy strong{font-size:14px;white-space:nowrap}
+ .logo-copy small{font-size:9px;white-space:nowrap}
+ .menu-toggle{display:flex!important;position:static;flex:0 0 40px;width:40px;height:40px;z-index:2}
+ .top nav{display:none;position:absolute;top:100%;left:12px;right:12px;flex-direction:column;align-items:stretch;gap:0;padding:8px;background:#073a3cf7;border:1px solid #c9975060;border-radius:0 0 15px 15px;box-shadow:0 14px 24px #062a2a35}
+ .top.menu-open nav{display:flex!important}
+ .top nav a{padding:11px 13px;border-bottom:1px solid #ffffff13;font-size:13px}
+ .top nav a:last-child{border-bottom:0}
+ .top .header-contact{display:none!important}
+ .actions{margin:0!important;gap:0;justify-self:start;min-width:0}
+ .lang{min-width:44px;padding:8px 10px;border-radius:12px}
+}
+@media(max-width:370px){
+ .top-in{gap:6px}
+ .logo-copy strong{font-size:12px}
+ .logo-copy small{font-size:8px}
+ .menu-toggle{width:36px;height:38px;flex-basis:36px}
+}
 </style>
 <link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css"></head><body>
 <a class="skip" href="#main">رفتن به محتوا</a>
