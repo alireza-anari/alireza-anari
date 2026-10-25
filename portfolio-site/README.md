@@ -1,3 +1,15 @@
+## Professional résumé page — 2026-10-25
+
+A bilingual, recruiter/client-friendly résumé is available at `/resume` and linked from the desktop/mobile navigation, the homepage About section and standalone feature pages.
+
+- Core capability areas: Python/Django/DRF, backend/API design, PostgreSQL/PostGIS/Redis, FastAPI, permission controls, booking and notification flows, chatbots, automation, regression tests, Git/Linux.
+- Three project summaries link directly to Loomera, Velo and Haniel Gold detail pages and honestly state their pre-launch, in-development or staging status.
+- No employer names, degrees, certifications, work durations, client outcomes or other details have been fabricated; those can be added once verified information is provided.
+- The Print / Save PDF button uses the browser's native print dialog and an A4 print stylesheet. This is a print-to-PDF workflow, not a separately hosted PDF file.
+- Contact buttons continue to work through `mailto:`; the email address is not displayed visibly on the page.
+- Server-rendered Persian fallback, metadata, canonical route and sitemap entry support sharing and indexing. Client-side language switching renders the English version. Existing Yekan Bakh font is retained.
+
+
 # Alireza Anari — Project-first Portfolio
 
 **Live**: https://alireza-portfolio.alirezaanari117.workers.dev/
