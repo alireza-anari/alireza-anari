@@ -18,6 +18,17 @@ Standalone safe sample-data demos:
 
 Images proxy through allowlisted `/media/gallery/:asset` from already published assets. Loomera shows a pre-launch UI overview and frontend visuals; Velo shows mockups and a brand asset; Haniel shows storefront visual assets. Images are explicitly labeled rather than presented as real production screenshots. All API demos use fictional values, are isolated from the original products, and do not create real users/bookings/payments.
 
+## Approved teal / cream / gold visual refresh — 2026-10-25
+
+Implemented the approved desktop and mobile visual direction on the live Cloudflare Worker.
+
+- Brand palette: deep teal header and contact panel, warm cream page surface, and restrained gold accents; the old neon-green dark theme is no longer used on the main portfolio.
+- Hero content is aligned to the approved reference: scalable-systems headline, real email CTA, a responsive developer/laptop photograph crop, and a lightweight technology strip.
+- The image is stored at `portfolio-site/assets/portfolio-hero.webp` (480×312, ~11.4 kB) and served from `/assets/portfolio-hero.webp` through the Worker with caching. It is a crop from the owner-approved design reference, not a flattened screenshot of the entire page.
+- The desktop header shows the Persian brand name, subtitle, navigation and project CTA. Mobile uses a working hamburger menu, responsive hero ordering, horizontally scrollable technology chips, compact horizontal project cards and adapted service/process/contact sections.
+- The supplied Yekan Bakh FaNum font remains active. Feature pages use the same palette while interactive demo workspaces and code excerpts retain dark surfaces for contrast.
+- Browser QA on the live site passed at desktop and ~390px mobile: hero image, project links, three service cards, workflow, contact and request form rendered; no horizontal overflow or broken hero image was detected; hamburger and language toggle worked; Loomera and Telegram feature pages kept the new palette. No real email was sent and the brief form was not submitted.
+
 ## Client conversion and trust update — 2026-10-24
 
 The portfolio has been revised after a skeptical nontechnical customer review. **Verified public email:** `alirezaanari119@gmail.com` (provided by the owner for the website). A phone number has not been published.
