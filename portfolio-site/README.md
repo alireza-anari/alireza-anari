@@ -1,3 +1,15 @@
+## Employer-facing résumé rewrite — 2026-10-25
+
+The public bilingual résumé page at `/resume` has been rewritten as a client-facing capability and project-evidence document, not a generic tech stack list.
+
+- A clear outcome-oriented headline connects backend engineering to booking, operational workflows and safer customer-data systems.
+- Four practical service areas describe what a client can commission, with direct links to relevant standalone feature pages.
+- Each of the three actual projects includes a business challenge, implementation scope and specific inspectable evidence, as well as its honest development status. No fabricated clients, work years, education, commercial savings or financial outcomes.
+- Engineering principles describe least-privilege authorization, testable business rules, validation and code structure; technical capabilities are grouped and skimmable.
+- Suitable engagements, a three-step proposed collaboration process and direct contact CTA are included without showing the email address as visible text.
+- The Persian and English versions share the same structured content, and updated responsive/A4 print styles preserve the existing browser Print / Save PDF workflow.
+- Verified directly against the live HTML/SEO response: section titles, three project summaries, original-code links, PDF print button, hidden email address and sitemap. Source JS passed a syntax check. The full interactive QA run was not available because the connected browser agent's wallet was out of funds; English-toggle/print interactions remain unverified in that browser session.
+
 ## Professional résumé page — 2026-10-25
 
 A bilingual, recruiter/client-friendly résumé is available at `/resume` and linked from the desktop/mobile navigation, the homepage About section and standalone feature pages.
