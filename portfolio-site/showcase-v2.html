@@ -466,6 +466,98 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  .resume-contact a{font-size:9px!important}
  a{color:#0c4848!important}
 }
+
+/* Professional client-focused résumé */
+.resume-header{align-items:start;gap:24px}
+.resume-header-copy{max-width:790px}
+.resume-header h1{margin:7px 0 6px}
+.resume-headline{font-size:clamp(18px,2.1vw,24px);line-height:1.55;color:#154548;margin:10px 0 9px}
+.resume-role{margin:0;color:#a06c31}
+.resume-lead{font-weight:600;font-size:13px;line-height:2;color:#264f51;max-width:740px;margin:8px 0}
+.resume-intro{font-size:12px;line-height:2;color:#6a7b7b}
+.resume-signals{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+.resume-signals span{border:1px solid #e3cba7;background:#fff8ed;color:#825e38;border-radius:100px;padding:4px 9px;font-size:10px;font-weight:600}
+.resume-actions{align-self:center}
+.resume-all-projects{color:#875e31;font-size:11px;font-weight:700;text-align:center;margin-top:3px}
+.resume-main{padding:28px 29px 30px 34px}
+.resume-sidebar{padding:30px 22px}
+.resume-section-title{margin-bottom:13px}
+.resume-section-title h2{font-size:19px}
+.resume-section-lead{font-size:12px;color:#687c7c;margin:0 0 14px}
+.resume-offers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.resume-offer{min-width:0;background:#fffdf9;border:1px solid #e9dcc9;padding:16px 17px;border-radius:14px;break-inside:avoid}
+.resume-offer-number{font:700 11px/1.4 ui-monospace,monospace;color:#ae7e40}
+.resume-offer h3{font-size:15px;line-height:1.6;margin:7px 0 6px;color:#104346}
+.resume-offer p{font-size:11px;color:#607779;line-height:1.95;margin:0 0 9px}
+.resume-offer a{font-size:11px;color:#a06b30;font-weight:700}
+.resume-project{padding:17px 19px}
+.resume-project-top{align-items:start}
+.resume-project-top>div{display:grid;gap:2px}
+.resume-project-type{font-size:11px;color:#51686c}
+.resume-project-status{font-size:10px;color:#997347;border:1px solid #e6d0ae;background:#f9eddb;padding:3px 8px;border-radius:30px}
+.resume-project-facts{display:grid;gap:7px;margin:13px 0}
+.resume-project-facts>div{padding-inline-start:12px;border-inline-start:2px solid #d8ae77}
+.resume-project-facts b{font-size:11px;color:#235357}
+.resume-project-facts p{font-size:11px;line-height:1.85;margin:2px 0 0;color:#637677}
+.resume-project-foot{display:flex;justify-content:space-between;align-items:end;gap:8px;flex-wrap:wrap}
+.resume-project-foot a{font-size:11px;color:#995d2a;font-weight:700}
+.resume-project .resume-tags{margin:8px 0 0}
+.resume-principles{display:grid;gap:12px}
+.resume-principle{border-inline-start:3px solid #d39a4e;padding:0 12px}
+.resume-principle strong{color:#1a4a4d;font-size:12px}
+.resume-principle p{color:#617677;font-size:11px;line-height:1.8;margin:3px 0 0}
+.resume-fit{margin:0;padding-inline-start:18px;color:#566f71;font-size:11px;line-height:2.1}
+.resume-fit li{margin:0 0 7px}
+.resume-contact-copy{font-size:11px;line-height:2;color:#627778}
+.resume-bottom{background:#f9f2e8;border-top:1px solid #e5d4bb;padding:26px 36px 24px}
+.resume-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.resume-step{border:1px solid #e4d4bd;border-radius:11px;background:#fffdfa;padding:13px 14px;display:flex;align-items:start;gap:10px;break-inside:avoid}
+.resume-step>b{font:700 11px/1.5 ui-monospace,monospace;color:#ac7b3c}
+.resume-step strong{font-size:11px;color:#19494a}
+.resume-step p{font-size:10px;color:#6b7a7a;line-height:1.8;margin:3px 0 0}
+.resume-truth{border-top:1px solid #e5d4bb;margin:19px 0 0;padding-top:12px;color:#6f7d7c;font-size:10px;line-height:1.9}
+@media(max-width:950px){
+.resume-header{flex-direction:column}
+.resume-actions{align-self:start;flex:0 0 auto;flex-direction:row;width:100%}
+.resume-actions .btn{flex:1}
+.resume-all-projects{align-self:center}
+}
+@media(max-width:650px){
+.resume-offers{grid-template-columns:1fr}
+.resume-steps{grid-template-columns:1fr}
+.resume-bottom{padding:22px 18px}
+.resume-header{padding:23px 18px}
+.resume-main{padding:22px 16px}
+.resume-project{padding:15px 13px}
+.resume-signals{gap:5px}
+.resume-signals span{font-size:9px}
+.resume-actions{flex-direction:column}
+.resume-actions .btn{width:100%}
+.resume-all-projects{align-self:center}
+}
+@media print{
+.resume-header{gap:8px!important}
+.resume-headline{font-size:14px!important;margin:7px 0!important}
+.resume-lead{font-size:10px!important;line-height:1.7!important}
+.resume-intro{font-size:9px!important;line-height:1.65!important}
+.resume-signals{margin-top:5px!important}
+.resume-signals span{font-size:8px!important;padding:2px 6px!important}
+.resume-offers{gap:5px!important}
+.resume-offer{padding:7px 8px!important}
+.resume-offer h3{font-size:10px!important;margin:3px 0!important}
+.resume-offer p{font-size:8px!important;line-height:1.45!important}
+.resume-offer a,.resume-project-foot a{font-size:8px!important}
+.resume-section-lead{font-size:9px!important;margin-bottom:6px!important}
+.resume-project-facts{gap:4px!important;margin:5px 0!important}
+.resume-project-facts b,.resume-project-facts p{font-size:8px!important;line-height:1.5!important}
+.resume-project-type,.resume-project-status{font-size:8px!important}
+.resume-principle strong,.resume-principle p,.resume-fit,.resume-contact-copy{font-size:8px!important;line-height:1.55!important}
+.resume-bottom{padding:12px 18px!important;break-inside:avoid}
+.resume-steps{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+.resume-step{padding:6px 7px!important}
+.resume-step strong,.resume-step p,.resume-truth{font-size:8px!important;line-height:1.45!important}
+.resume-contact-section{page-break-inside:avoid}
+}
 </style>
 <link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css"></head><body>
 <a class="skip" href="#main">رفتن به محتوا</a>
