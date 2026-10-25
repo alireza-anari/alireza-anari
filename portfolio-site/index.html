@@ -132,6 +132,24 @@ button.secondary,.btn-secondary,.demo-button.secondary{background:#fffaf2!import
 .feature-detail input,.feature-detail select,.feature-detail textarea,.project-detail input,.project-detail select,.project-detail textarea{background:#fffdf9;color:#10383b;border-color:#ddcdb4}
 footer,.site-footer{border-color:#e4d4bd;color:#687a7a}
 @media(max-width:760px){.site-header{background:#063a3df5}.brand-copy b{font-size:14px}.brand-copy small{font-size:9px}}
+
+/* Compact mobile header: no overlap between brand, menu and language */
+@media(max-width:760px){
+ .site-header{height:72px;position:sticky;top:0;z-index:40}
+ .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;height:72px}
+ .brand{min-width:0;gap:8px;white-space:nowrap}
+ .brand-mark{flex:0 0 36px;width:36px;height:36px;font-size:30px}
+ .brand-copy{min-width:0}
+ .brand-copy b{font-size:13px;white-space:nowrap}
+ .brand-copy small{font-size:9px;white-space:nowrap}
+ .nav-actions{gap:8px;min-width:0}
+ .nav-actions .menu-toggle{display:grid;place-items:center;order:-1;flex:0 0 40px;width:40px;height:40px}
+ .nav-actions .lang{order:1;min-width:44px;padding:8px 10px;border-radius:12px}
+ .header-cta{display:none}
+ .nav{position:absolute;top:72px;inset-inline:12px;background:#073a3cf7;border:1px solid #d79a4b66;border-radius:0 0 14px 14px;padding:8px;box-shadow:0 14px 24px #062a2a35}
+ .nav.open{display:flex}
+ .nav a{padding:11px 12px;border-bottom:1px solid #ffffff13}
+}
 </style>
 <link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css"></head>
 <body>
