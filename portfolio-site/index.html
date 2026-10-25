@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0c100e">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#073c3d">
 <meta name="description" content="علیرضا اناری | توسعه‌دهنده بک‌اند Django و Python؛ طراحی و پیاده‌سازی API، سامانه رزرو، PostgreSQL و محصولات مقیاس‌پذیر. نمونه‌کارها و همکاری پروژه‌ای.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alireza Anari — Django & Backend Engineer">
@@ -94,6 +94,44 @@
 .studio-process [data-step].active{border-color:#d6fa76;color:#10200c;background:#d6fa76;font-weight:800}
 .studio-arr{color:#789d6e;font-size:14px}
 @media(max-width:600px){.studio-two{grid-template-columns:1fr;gap:7px}.studio-two .studio-label{margin-top:9px}.studio-two .studio-input{margin:0 0 5px}.studio-process{gap:5px}.studio-process [data-step]{padding:8px;font-size:10px}.studio-arr{font-size:11px}}
+
+/* Shared approved brand palette for feature and project detail pages */
+:root{--bg:#f6efe4;--surface:#fffaf2;--surface2:#f0e5d4;--line:#e4d4bd;--text:#10383b;--muted:#667779;--accent:#d79a4b;--violet:#0e5b5b;--orange:#b9823b;--radius:20px}
+body{background:var(--bg);color:var(--text);font-family:"Yekan Bakh FaNum",Tahoma,sans-serif}
+.grid-bg{opacity:.18;background-image:linear-gradient(#b78d4d0c 1px,transparent 1px),linear-gradient(90deg,#b78d4d0c 1px,transparent 1px)}
+.site-header{background:#063a3def;border-color:#d79a4b66;box-shadow:0 8px 26px #07353610}
+.brand{direction:rtl;min-width:0}.brand-mark{border:0;border-radius:0;color:#e2a451;font:900 36px/1 Georgia,serif;width:40px;height:44px}
+.brand-copy{direction:rtl;text-align:right;line-height:1.4}.brand-copy b{font:700 16px/1.4 "Yekan Bakh FaNum",Tahoma,sans-serif;color:#fff;letter-spacing:0}.brand-copy small{font:400 10px/1.5 "Yekan Bakh FaNum",Tahoma,sans-serif;color:#d4e1dc;letter-spacing:0;margin-top:2px}
+.nav a{color:#e1e9e4}.nav a:hover,.nav a:focus-visible{color:#f1bd72}
+.header-cta{background:#d79a4b;border-color:#e4ae65;color:#123739;border-radius:10px}
+.lang{border-color:#b98c54;color:#fff;background:#ffffff08}
+a:focus-visible,button:focus-visible{outline-color:#d79a4b}
+.feature-card{background:#fffaf2;border-color:#e5d5bf;box-shadow:0 7px 22px #76572b0b}
+.feature-card:hover{border-color:#d8ad70;box-shadow:0 12px 26px #62441b12}
+.feature-card .symbol{background:#f3e5d0;border-color:#e2c79e;color:#0d5555}
+.feature-card .small-type{color:#a47a43}
+.feature-card h3,.project-detail h1,.feature-detail h1{color:#10383b}
+.feature-card p{color:#667779}
+.feature-card .feature-bottom{border-color:#e6d7c2}
+.feature-card .used-in{color:#687a7a}.feature-card .try{color:#a66f2f}
+.availability{background:#f8eddb;border-color:#e5d0ad;color:#875c29}
+.pulse{background:#d79a4b;box-shadow:0 0 0 4px #d79a4b24}
+.section-heading h2{color:#10383b}
+.section-heading p,.demo-note{color:#667779}
+.text-link{color:#a87332}
+.project-detail,.feature-detail{color:#10383b}
+.breadcrumbs{color:#758685}
+.project-wide,.feature-detail .panel,.project-detail .panel,.feature-demo,.detail-panel{background:#fffaf2;border-color:#e5d5bf}
+.project-wide h2,.project-wide h3,.feature-detail h2,.feature-detail h3{color:#10383b}
+.project-wide p,.feature-detail p{color:#667779}
+.demo-note{background:#f3e7d6;border:1px solid #e5d2b4;border-radius:12px;padding:12px}
+button.primary,.btn-primary,.demo-button.primary{background:#073c3d!important;color:#fffaf2!important;border-color:#0d5556!important}
+button.secondary,.btn-secondary,.demo-button.secondary{background:#fffaf2!important;color:#10383b!important;border-color:#d79a4b!important}
+.feature-detail .demo-app,.project-detail .demo-app,.demo-app,.studio-shell{background:#073638;color:#f7f0e4}
+.feature-detail .code-card,.project-detail .code-card,.code-card,.code-panel{background:#082f31;color:#f4e8d7;border-color:#205657}
+.feature-detail input,.feature-detail select,.feature-detail textarea,.project-detail input,.project-detail select,.project-detail textarea{background:#fffdf9;color:#10383b;border-color:#ddcdb4}
+footer,.site-footer{border-color:#e4d4bd;color:#687a7a}
+@media(max-width:760px){.site-header{background:#063a3df5}.brand-copy b{font-size:14px}.brand-copy small{font-size:9px}}
 </style>
 <link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css"></head>
 <body>
@@ -101,7 +139,7 @@
 <div class="grid-bg" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="Alireza Anari, home"><span class="brand-mark">A/</span><span class="brand-copy"><b>ALIREZA ANARI</b><small>BACKEND ENGINEER</small></span></a>
+    <a class="brand" href="#top" aria-label="Alireza Anari, home"><span class="brand-mark">A</span><span class="brand-copy"><b>علیرضا اناری</b><small>توسعه‌دهنده نرم‌افزار</small></span></a>
     <nav class="nav" id="nav" aria-label="Main navigation">
       <a href="/#projects" data-i="navWork">پروژه‌ها</a><a href="/#feature-catalog" data-i="navFeatures">قابلیت‌ها</a><a href="/#service-options" data-i="navServices">تخصص‌ها</a><a href="/#about" data-i="navAbout">درباره من</a><a href="/#contact" data-i="navContact">ارتباط</a>
     </nav>
