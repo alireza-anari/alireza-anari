@@ -1,3 +1,18 @@
+## November 2026 GitHub-source refresh & final UI polish
+
+Updated the live portfolio against the **actual current project repositories**, with a strict source/evidence boundary:
+
+- **Loomera:** kept the original booking proof and isolated assistant/bot modules; added a carefully labeled research/development highlight for loomera-global's opt-in Redis OTP / WATCH work. The verified `docs/globalization/PHASE7_35_EXIT_MATRIX.json` has `release_gate=BLOCKED`, `deployment_executed=false`; no production claim was made.
+- **HANI-EL GOLD:** corrected the misleading legacy-Django runtime portrayal. The current public storefront is Cloudflare Pages + Pages Functions + D1 + Workers KV, with admin catalog/purchase inquiries rather than live payment. The separate Telegram management mini app is a source-backed beta, **not deployment-verified**. Replaced the three featured code snippets with relevant exact-source excerpts from `telegram-miniapp/src/finance.js` and `telegram-miniapp/src/index.js`.
+- **Original finance demo:** added `/original/haniel-finance/` with a directly imported copy of the exact original `telegram-miniapp/src/finance.js` from `Haniel_Gold/main`. Demo uses client-side BigInt fixed-point calculations, sample price/rate/weight/discount, **no live rate, tax policy, Telegram login, sales or payment**. Worker serves the untouched source at `/original/haniel-finance/finance.js`. A redirect-loop issue on the canonical trailing-slash path was detected and fixed after deployment.
+- **Madar:** added `/projects/madar` as a **development-stage source-backed case study** from `madar-vpn` branch `deploy/madar-v2-staging-20261117`, using snippets from `apps/sales-bot/src/node-capacity.ts`, `miniapp-auth.ts` and `policies.ts`. There is no fabricated working VPN/connectivity demo, and no assertion that production sales or VPS connectivity has passed acceptance.
+- **Velo:** preserved as a distinct earlier Android/FastAPI project and its original security module demo; not conflated with Madar.
+- **Portfolio:** homepage has four case study cards, three recent-engineering highlights, updated bilingual résumé (four projects), consistent teal/cream/gold palette and 2×2 desktop project grid, responsive cards and source details. No GitHub outbound repository links and no email address displayed in plain text; direct `mailto:` CTA retained.
+- **Visual QA:** Cloudflare Browser Rendering confirmed four project cards and three update cards in a 390px mobile viewport, the 2×2 project layout at 1440px, and the mobile header's logo width fixing prior clipping (logo x=115..377 and other controls x=13..106 at 390px). Finance module executed in a real browser and produced **۲۸٬۳۵۰٬۰۰۰ تومان** from illustrative inputs. Existing project and feature page routes were smoke-tested. A separate responsive résumé browser scrape was blocked by the renderer's transient network error; don't claim it passed.
+
+**Production caveats:** This is a client-facing portfolio, not the deployment of any of the showcased products. Project source and staging tests are deliberately not represented as verified commercial services. The code-backed financial demonstration is for testing the original module, not a valid sale quote.
+
+
 ## Employer-facing résumé rewrite — 2026-10-25
 
 The public bilingual résumé page at `/resume` has been rewritten as a client-facing capability and project-evidence document, not a generic tech stack list.
