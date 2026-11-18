@@ -137,7 +137,7 @@ function openPalette(e){if(e)e.preventDefault();$("palette").classList.add("open
 function closePalette(){$("palette").classList.remove("open");$("palette-input").value=""}
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>selectMode(b.dataset.mode)));
 document.querySelectorAll("[data-jump-mode]").forEach(b=>b.addEventListener("click",()=>{selectMode(b.dataset.jumpMode);document.getElementById("lab").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}));
-$("run").addEventListener("click",run);$("clear").addEventListener("click",reset);
+$("run").addEventListener("click",run);$("clear").addEventListener("click",reset);$("inputs").addEventListener("submit",e=>{e.preventDefault();run()});
 $("case-list").addEventListener("click",e=>{const b=e.target.closest("[data-case]");if(!b)return;caseId=b.dataset.case;renderCase()});
 $("lang").addEventListener("click",()=>{lang=lang==="fa"?"en":"fa";i18n()});
 $("palette-open").addEventListener("click",openPalette);$("proof-open-palette").addEventListener("click",openPalette);$("palette-close").addEventListener("click",closePalette);
