@@ -253,34 +253,34 @@
       ]
     },
     "haniel-gold": {
-      "category": "ONLINE COMMERCE",
+      "category": "CLOUDFLARE COMMERCE",
       "name": {
-        "fa": "Haniel Gold | فروشگاه و قیمت‌گذاری طلا",
-        "en": "Haniel Gold | Storefront & Pricing"
+        "fa": "HANI-EL GOLD | فروشگاه و مدیریت طلا",
+        "en": "HANI-EL GOLD | Storefront & Gold Operations"
       },
       "oneLiner": {
-        "fa": "فروشگاه آنلاین با محاسبه قیمت بر اساس وزن و اجرت، و کنترل اعتبار نرخ.",
-        "en": "Online storefront with weight-based pricing and safeguards for rate validity."
+        "fa": "ویترین و مدیریت استعلام خرید طلا با قیمت‌گذاری کنترل‌شده؛ همراه با ماژول آزمایشی مدیریت مالی در تلگرام.",
+        "en": "Cloudflare-native gold catalog and purchase inquiries, plus a separate experimental Telegram management mini app."
       },
       "intro": {
-        "fa": "هانیل گلد نمونه یک فروشگاه فارسی است که قیمت هر محصول را باید با قواعد مشخص، وزن، عیار و نرخ تأییدشده محاسبه کند.",
-        "en": "Haniel Gold is a Persian storefront where pricing depends on product weight, purity and approved rate policies."
+        "fa": "ویترین فارسی طلا با API هم‌دامنه، مدیریت کالا، استعلام خرید و کنترل اعتبار نرخ؛ توسعه جداگانه یک مینی‌اپ تلگرام برای موجودی و فروش هم در مخزن وجود دارد.",
+        "en": "A Persian gold catalog built on Cloudflare Pages Functions and D1, with product management, purchase inquiries and rate safeguards. A separate Telegram inventory/sales mini app is in experimental development."
       },
       "story": {
-        "fa": "در فروشگاه طلا، نشان‌دادن یک قیمت ثابت کافی نیست؛ نرخ بازار تغییر می‌کند و اجرت، سود و مالیات هم نقش دارند. برای این محصول رابط فروشگاهی و بک‌اند Django طراحی شده تا نرخ‌ها اعتبارسنجی شوند و سیاست‌های قیمت‌گذاری قابل کنترل باشند. پروژه در مرحله استیجینگ است و فروش یا پرداخت واقعی این دمو فعال نیست.",
-        "en": "Gold pricing cannot rely on a static number. Rates change, while labor, margin and taxes also matter. The project includes a storefront and Django backend designed to validate rate feeds and apply reviewed policies. It is staging-oriented, with no live sales or payments in this demo."
+        "fa": "برای فروش کالاهای وابسته به نرخ طلا، نمایش قیمت بدون کنترل اعتبار نرخ یا وضعیت موجودی قابل اتکا نیست. نسخه فعلی HANI-EL GOLD از Cloudflare Pages، Functions، پایگاه داده D1 و Workers KV برای کاتالوگ و رسانه‌ها استفاده می‌کند. مدیر محصول و نرخ را بررسی می‌کند و مشتری به‌جای پرداخت قطعی، درخواست بررسی خرید می‌فرستد. علاوه بر این، یک مینی‌اپ مدیریتی تلگرام با محاسبات دقیق مالی، نقش‌ها و ورود و خروج Excel در کد توسعه یافته است؛ این مینی‌اپ هنوز استقرار عملیاتی تأییدشده ندارد.",
+        "en": "Gold prices depend on current rates, validated policies and stock. HANI-EL GOLD currently uses Cloudflare Pages, Pages Functions, D1 and Workers KV for the catalog and media. Customers submit purchase inquiries rather than completing online payments. A separate Telegram management mini app includes fixed-point financial calculations, role controls and Excel workflows in source, but has not been verified as deployed."
       },
       "problem": {
-        "fa": "قیمت اشتباه یا نرخ قدیمی می‌تواند باعث تصمیم نادرست مشتری شود، و فرمول قیمت نباید مبهم باشد.",
-        "en": "Stale rates or opaque calculations can mislead customers and create serious pricing errors."
+        "fa": "محاسبه امن قیمت وابسته به نرخ، جلوگیری از نمایش نرخ منقضی یا نامعتبر و مدیریت دستی استعلام خرید و موجودی.",
+        "en": "Rate-dependent pricing, rejecting stale or invalid rates and operating a controlled product catalog and purchase-inquiry flow."
       },
       "solution": {
-        "fa": "بررسی تازگی نرخ و واحد پول، محاسبه تفکیکی اجزای قیمت و کنترل استفاده از نرخ‌هایی که جهش غیرعادی دارند.",
-        "en": "Validate rate freshness and currency units, separate calculation components and flag unusual rate movements."
+        "fa": "معماری Cloudflare-native شامل Pages Functions، D1، KV، مدیریت کاتالوگ و استعلام خرید؛ ماژول آزمایشی تلگرام با محاسبات ثابت‌دقت BigInt و بررسی امضای ورود.",
+        "en": "Cloudflare-native Pages Functions, D1 and KV for catalog/inquiries, plus a separate Telegram beta with BigInt fixed-point finance and signed-login checks."
       },
       "demoIntro": {
-        "fa": "این صفحه از فایل‌های HTML، CSS و JavaScript واقعی فرانت‌اند Haniel Gold اجرا می‌شود. می‌توانید منو، فیلتر کالا، جست‌وجو، علاقه‌مندی و سبد نمایشی خودِ پروژه را امتحان کنید؛ اطلاعات فروشگاه و درگاه واقعی متصل نیست.",
-        "en": "The actual Haniel Gold frontend HTML, CSS and JavaScript files run here. Explore the original catalog navigation, filtering, favorites and local cart. No live inventory, rates or payment gateways are connected."
+        "fa": "نسخه اصلی HTML/CSS/JS فرانت‌اند فروشگاه اجرا می‌شود؛ کالاها و قیمت‌های این نمایش آزمایشی‌اند و ثبت سفارش یا درگاه پرداخت فعال نیست. برای بررسی منطق مالی مینی‌اپ جدید، دمو جداگانه‌ای با همان فایل finance.js اصلی فراهم شده است.",
+        "en": "This runs the original storefront frontend files with sample catalog data; it cannot take orders or payment. A separate demo runs the new mini app's exact original finance.js module with sample values."
       },
       "galleryNote": {
         "fa": "این‌ها تصاویر واقعی استفاده‌شده در فرانت‌اند پروژه هستند، نه اسکرین‌شات سفارش واقعی یا فروشگاه فعال.",
@@ -288,16 +288,16 @@
       },
       "pills": [
         {
-          "fa": "فروشگاه فارسی",
-          "en": "Persian storefront"
+          "fa": "Cloudflare Pages + D1",
+          "en": "Cloudflare Pages + D1"
         },
         {
-          "fa": "Django API",
-          "en": "Django APIs"
+          "fa": "کاتالوگ و استعلام خرید",
+          "en": "Catalog & inquiries"
         },
         {
-          "fa": "قیمت‌گذاری قابل کنترل",
-          "en": "Controlled pricing"
+          "fa": "مینی‌اپ تلگرام (بتا)",
+          "en": "Telegram Mini App (beta)"
         }
       ],
       "featureSlugs": [
@@ -336,46 +336,46 @@
       ],
       "snippets": [
         {
-          "file": "backend/commerce/rate_feed.py",
-          "name": "parse_observation",
+          "file": "telegram-miniapp/src/finance.js",
+          "name": "dec",
           "title": {
-            "fa": "رد کردن نرخ نامعتبر یا تاریخ‌گذشته",
-            "en": "Rejecting stale or invalid market rates"
+            "fa": "محاسبات مالی با دقت ثابت و پشتیبانی از ارقام فارسی",
+            "en": "Fixed-point financial arithmetic and Persian digits"
           },
           "why": {
-            "fa": "قبل از استفاده از نرخ، واحد پول، فرمت عددی و زمان ثبت منبع بررسی می‌شود تا رقم قدیمی یا نامعتبر مبنای محاسبه نشود.",
-            "en": "The rate feed validates units, numeric formats, timezone-aware timestamps and freshness before accepting an observation."
+            "fa": "ورودی نرخ و وزن با BigInt و ۱۵ رقم دقت اعشار خوانده می‌شود تا خطای گردکردن معمول اعداد اعشاری وارد محاسبه قیمت نشود.",
+            "en": "Rates and weights are parsed using BigInt fixed-point arithmetic with up to 15 decimal places, avoiding binary floating-point drift."
           },
-          "code": "def parse_observation(data,*,price_path,time_path,unit,now=None,max_age_seconds=2400):\n    if unit not in ('TOMAN','RIAL'):\n        raise FeedError('واحد رسمی سرویس باید به‌صراحت TOMAN یا RIAL تعیین شود.')\n    rate=to_decimal(at_path(data,price_path))\n    rate=rate/Decimal('10') if unit=='RIAL' else rate\n    if rate.as_tuple().exponent < -2:\n        raise FeedError('مقدار نرخ بیش از دو رقم اعشار دارد.')\n    rate=rate.quantize(Decimal('.01'))\n    raw_time=at_path(data,time_path)\n    if not isinstance(raw_time,str):\n        raise FeedError('زمان ثبت نرخ باید ISO 8601 دارای منطقه زمانی باشد.')\n    try:\n        observed=datetime.fromisoformat(raw_time.replace('Z','+00:00'))\n    except ValueError as exc:\n        raise FeedError('زمان ثبت نرخ ISO 8601 معتبر نیست.') from exc\n    if observed.tzinfo is None or observed.utcoffset() is None:\n        raise FeedError('زمان نرخ باید منطقه زمانی مشخص داشته باشد.')\n    now=now or datetime.now(timezone.utc)\n    if observed>now+timedelta(minutes=2):\n        raise FeedError('زمان نرخ از آینده است.')\n    if now-observed>timedelta(seconds=max_age_seconds):\n        raise FeedError('زمان نرخ منقضی یا قدیمی است.')\n    return Observation(toman_per_gram=rate,observed_at=observed)",
-          "language": "Python"
+          "language": "JavaScript",
+          "code": "const SCALE=1000000000000000n;\nexport const asciiDigits=x=>String(x??'').replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-1776)).replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632));\nexport function dec(x,label='عدد') {\n const s=asciiDigits(x).trim().replace(/[,٬،\\s]/g,'');\n if(!/^-?\\d+(\\.\\d{1,15})?$/.test(s)||s.length>38)throw Error(`«${label}» باید عدد معتبر با حداکثر ۱۵ رقم اعشار باشد.`);\n const neg=s.startsWith('-'),[a,b='']=s.replace('-','').split('.');\n const val=BigInt(a)*SCALE+BigInt(b.padEnd(15,'0'));\n return neg?-val:val;\n}"
         },
         {
-          "file": "backend/commerce/services.py",
-          "name": "calculate_line",
+          "file": "telegram-miniapp/src/finance.js",
+          "name": "quote",
           "title": {
-            "fa": "تفکیک دقیق اجزای قیمت",
-            "en": "Transparent price calculation"
+            "fa": "قیمت‌گذاری و جلوگیری از مبلغ منفی",
+            "en": "Price calculations with invalid-total rejection"
           },
           "why": {
-            "fa": "ارزش وزن، اجرت، سود و مالیات هر کدام جداگانه محاسبه می‌شوند؛ وجود نرخ با عیار اشتباه و تنظیمات ناقص نیز بررسی می‌شود.",
-            "en": "Material cost, labor, margin and tax are computed separately, with checks for inconsistent rates and incomplete policies."
+            "fa": "اجزای قیمت جداگانه محاسبه و نتیجه تخفیف نامعتبر رد می‌شود. این ماژول برای نمونه داده قابل اجراست و نرخ روز واقعی در دمو استفاده نمی‌شود.",
+            "en": "Breaks out weight, labor and profit components while rejecting negative final totals. The demo only uses illustrative inputs, not live gold rates."
           },
-          "code": "def calculate_line(product,rate,policy):\n    \"\"\"PROPOSED formula. Only usable after human approval of PricingPolicy.\n\n    Raw = product weight * approved per-karat rate.\n    Labor = raw * workmanship% + fixed labor amount.\n    Profit = (raw + labor) * profit%.\n    Tax = (labor+profit)*reviewed tax% or zero if explicitly approved as none.\n    Rounded individually to whole toman; shipping applied per quote, not per item.\n    \"\"\"\n    if any(x is None for x in (product.weight_grams,product.karat,\n                                product.profit_percent,policy.tax_percent,policy.shipping_toman)) or not policy.tax_basis:\n        raise ServiceUnavailable('مشخصات قیمت‌گذاری یا هزینه ارسال هنوز تکمیل و تأیید نشده است.')\n    if rate.karat != product.karat:\n        raise Conflict('عیار نرخ و محصول مطابقت ندارد.')\n    raw=toman(product.weight_grams * rate.toman_per_gram)\n    if product.workmanship_percent is None and not product.workmanship_fixed_toman:\n        raise ServiceUnavailable('نوع اجرت (درصدی یا ثابت) تنظیم نشده است.')\n    labor=toman(raw * (product.workmanship_percent or Decimal('0')) / Decimal('100') + (product.workmanship_fixed_toman or Decimal('0')))\n    profit=toman((raw+labor)*product.profit_percent/Decimal('100'))\n    taxable = labor+profit if policy.tax_basis=='fee_profit' else Decimal(0)\n    tax=toman(taxable*policy.tax_percent/Decimal('100'))\n    return {'raw':raw,'labor':labor,'profit':profit,'tax':tax,'total':raw+labor+profit+tax}",
-          "language": "Python"
+          "language": "JavaScript",
+          "code": "export function quote(p,input){\n const q=quantity(input.quantity);if(q<1)throw Error('تعداد فروش باید بیشتر از صفر باشد.');\n const w=valid(p.weight,'وزن',{min:1n}),rate=valid(input.gold_rate,'قیمت روز',{min:1n});\n const labor=valid(input.labor_pct,'اجرت فروش',{max:'100'}),profit=valid(input.profit_pct,'درصد سود',{max:'100'});\n const accessories=valid(input.accessories??0,'متعلقات'),discount=valid(input.discount??0,'تخفیف');\n const totalWeight=w*BigInt(q),raw=mul(totalWeight,rate),laborGold=div(mul(totalWeight,labor),dec('100'));\n const profitGold=div(mul(totalWeight+laborGold,profit),dec('100'));\n const profitRial=mul(profitGold,rate),final=raw+mul(laborGold,rate)+profitRial+accessories-discount;\n if(final<0n)throw Error('قیمت نهایی با این تخفیف منفی می‌شود.');\n const cost=purchaseUnitCost(p)*BigInt(q);\n return {quantity:q,unit_weight:fmt(w),total_weight:fmt(totalWeight),gold_rate:fmt(rate),labor_pct:fmt(labor),profit_pct:fmt(profit),accessories:fmt(accessories),discount:fmt(discount),raw_price:fmt(raw),labor_gold:fmt(laborGold),profit_gold:fmt(profitGold),profit_rial:fmt(profitRial),final_price:fmt(final),purchase_cost:fmt(cost),net_profit:fmt(final-cost-accessories)};\n}"
         },
         {
-          "file": "backend/tests/test_rate_service.py",
-          "name": "test_large_jump_blocks_quotes",
+          "file": "telegram-miniapp/src/index.js",
+          "name": "verifyTelegram",
           "title": {
-            "fa": "آزمون ایمنی تغییر شدید قیمت",
-            "en": "Test that sudden rate jumps block quotes"
+            "fa": "اعتبارسنجی امضای ورود تلگرام",
+            "en": "Telegram Mini App signed login verification"
           },
           "why": {
-            "fa": "یک تست واقعی تضمین می‌کند تغییر شدید نرخ، سیستم استعلام قیمت را متوقف کند تا قبل از تأیید انسانی از نرخ مشکوک استفاده نشود.",
-            "en": "A regression test verifies unusually large rate jumps pause quotes until a human review."
+            "fa": "هویت کاربر با امضای HMAC و زمان اعتبار بررسی می‌شود و در صورت امضای نادرست دسترسی رد می‌گردد. این بررسی به هیچ سرویس واقعی در پورتفولیو متصل نیست.",
+            "en": "Checks Telegram initData HMAC and age before authorization, rejecting invalid signatures. The portfolio does not authenticate live Telegram accounts."
           },
-          "code": "    def test_large_jump_blocks_quotes(self):\n        self.activate_first()\n        r=sync_gold_rate(observation=self.observation('11500000'))\n        self.assertEqual(r['status'],'rejected')\n        self.assertTrue(RateSyncState.objects.get(pk=1).blocked)\n        self.assertEqual(GoldRate.objects.get(active=True).toman_per_gram,Decimal('10000000'))\n        self.assertEqual(current_pricing_context()[2],'blocked')",
-          "language": "Python"
+          "language": "JavaScript",
+          "code": "const p=new URLSearchParams(raw), hash=p.get('hash');const age=Number(p.get('auth_date'));\n if(!hash||!/^[a-f\\d]{64}$/i.test(hash)||!Number.isSafeInteger(age)||now-age>maxAge||age>now+60)err('ورود تلگرام نامعتبر یا منقضی شده است.',401);\n const check=[...p.entries()].filter(([k])=>k!=='hash').sort(([a],[b])=>a.localeCompare(b,'en')).map(([k,v])=>`${k}=${v}`).join('\\n');\n const secret=await hmac(textEncoder.encode('WebAppData'),token);const received=toHex(await hmac(secret,check));\n let delta=0;for(let i=0;i<64;i++)delta|=received.charCodeAt(i)^hash.toLowerCase().charCodeAt(i);\n if(delta!==0)err('امضای ورود تلگرام معتبر نیست.',401);"
         }
       ]
     }
