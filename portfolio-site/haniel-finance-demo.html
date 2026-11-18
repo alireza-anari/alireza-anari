@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#073c3d">
+<title>اجرای ماژول مالی اصلی HANI-EL GOLD | نمونه‌کار</title>
+<link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css">
+<style>
+:root{--teal:#073c3d;--cream:#faf3e9;--gold:#b8884c;--text:#163d3e}*{box-sizing:border-box}
+body{margin:0;font:14px/1.85 "Yekan Bakh FaNum",Tahoma,Arial,sans-serif;background:radial-gradient(ellipse at 10% 0%,#e3c59a55,transparent 40%),#f7efe3;color:var(--text)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+.shell{max-width:1040px;margin:auto;padding:22px 16px 60px}
+.bar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px}
+.brand{color:var(--teal);font-weight:850;font-size:16px}.brand b{color:var(--gold);font:900 30px Georgia,serif;margin-inline-end:10px}
+.back{font-size:12px;border:1px solid #ddcdb6;border-radius:10px;padding:9px 14px;background:#fff9f0}
+main{border:1px solid #e2d2b9;border-radius:24px;background:#fffbf6;box-shadow:0 15px 38px #143b2812;overflow:hidden}
+.intro{background:linear-gradient(125deg,#f0ddc0,#fffaf4);padding:28px 32px}
+.intro span{font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.12em;color:#ae783a}
+.intro h1{font-size:clamp(25px,3.4vw,40px);line-height:1.5;margin:12px 0}
+.intro p{font-size:13px;line-height:2.1;max-width:720px;color:#637878}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.tags b{font-size:10px;background:#fffaf0;border:1px solid #e4d0b0;border-radius:50px;padding:5px 10px;color:#855c2e}
+.notice{margin:16px 30px 0;background:#f8ecdc;border-inline-start:3px solid var(--gold);padding:12px 15px;color:#765b39;font-size:12px;border-radius:9px}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:24px 30px 34px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form label{display:grid;gap:6px;font-size:12px;color:#37575a}
+.form input{min-height:46px;border:1px solid #ddcbb3;background:#fffdfa;color:#164042;border-radius:10px;padding:8px 12px;direction:ltr;text-align:left;width:100%}
+.form input:focus{outline:2px solid var(--gold);outline-offset:2px}
+.form label:nth-child(-n+2),.form label:nth-child(7),.form button{grid-column:1/-1}
+.form button{background:var(--teal);color:white;font-weight:750;border:0;border-radius:11px;padding:12px;min-height:48px}
+.form button:hover{background:#116265}
+.results{background:var(--teal);border-radius:16px;padding:20px;color:#fff5e7;min-height:320px}
+.results h2{font-size:18px;margin:0 0 15px;color:white}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px solid #ffffff25;padding:10px 0}
+.row span{font-size:12px;color:#cfe0d9}.row strong{font-size:14px;color:#f8f0e2;direction:ltr;text-align:left}
+.row.final{background:#ffffff12;border:1px solid #dba968;border-radius:10px;margin-top:15px;padding:12px}.row.final strong{font-size:18px;color:#f1c383}
+#error{color:#f9ccab;font-size:11px;line-height:1.8}footer{font-size:11px;color:#627574;text-align:center;margin:18px 0}footer a{color:#9e6d33;font-weight:700}
+@media(max-width:700px){.content{grid-template-columns:1fr;padding:19px 16px}.intro{padding:21px 18px}.notice{margin:13px 17px 0}.shell{padding:15px 10px 38px}.brand{font-size:12px}}
+@media(max-width:360px){.form{grid-template-columns:1fr}.form label{grid-column:1/-1}}
+</style></head>
+<body><div class="shell">
+<header class="bar"><div class="brand"><b>H</b> HANI-EL GOLD · Finance</div><a class="back" href="/projects/haniel-gold">بازگشت به پروژه ↗</a></header>
+<main><div class="intro"><span>REAL SOURCE / ORIGINAL finance.js</span><h1>محاسبه قیمت با ماژول واقعی HANI-EL GOLD</h1><p>این صفحه همان فایل <code>telegram-miniapp/src/finance.js</code> پروژه را به‌صورت ماژول JavaScript اجرا می‌کند. عددها صرفاً آزمایشی هستند؛ حساب تلگرام، نرخ زنده و تراکنش مالی به این صفحه متصل نیستند.</p><div class="tags"><b>BigInt · 15 Decimal Places</b><b>بدون ورود</b><b>بدون ذخیره‌سازی یا پرداخت</b></div></div>
+<p class="notice"><b>نمونه فنی، نه پیش‌فاکتور:</b> سیاست مالی، مالیات و قیمت واقعی باید جداگانه تأیید شوند. استقرار عملیاتی مینی‌اپ هنوز تأیید نشده است.</p>
+<div class="content"><form id="form" class="form">
+<label>وزن هر محصول (گرم)<input name="weight" value="2.5" inputmode="decimal" required></label>
+<label>نرخ هر گرم آزمایشی (تومان)<input name="rate" value="10000000" inputmode="decimal" required></label>
+<label>تعداد<input name="quantity" value="1" inputmode="numeric" required></label>
+<label>اجرت فروش (%)<input name="labor" value="8" inputmode="decimal" required></label>
+<label>سود (%)<input name="profit" value="5" inputmode="decimal" required></label>
+<label>نرخ خرید آزمایشی (تومان)<input name="purchase" value="9000000" inputmode="decimal" required></label>
+<label>تخفیف آزمایشی (تومان)<input name="discount" value="0" inputmode="decimal" required></label>
+<button type="submit">محاسبه با کد اصلی ↗</button></form>
+<section class="results" aria-live="polite"><h2>خروجی ماژول مالی</h2>
+<div class="row"><span>وزن کل</span><strong id="weight-result">—</strong></div>
+<div class="row"><span>بهای خام نمونه</span><strong id="raw-result">—</strong></div>
+<div class="row"><span>مبلغ اجرت</span><strong id="labor-result">—</strong></div>
+<div class="row"><span>مبلغ سود</span><strong id="profit-result">—</strong></div>
+<div class="row final"><span>مجموع نمونه</span><strong id="final-result">—</strong></div>
+<p id="error" role="status"></p></section></div></main>
+<footer>اجرای یک ماژول منبع واقعی با داده نمونه · <a href="/projects/haniel-gold">جزئیات پروژه و کدهای منتخب</a></footer></div>
+<script type="module">
+import {quote,asciiDigits} from "/original/haniel-finance/finance.js";
+const form=document.getElementById("form"),fmt=x=>Number(x).toLocaleString("fa-IR",{maximumFractionDigits:2}),currency=x=>fmt(x)+" تومان";
+function calculate(e){
+ e?.preventDefault();const data=new FormData(form),get=k=>asciiDigits(data.get(k));
+ try{
+  const p={weight:get("weight"),purchase_gold_rate:get("purchase"),purchase_labor_pct:"2"};
+  const input={quantity:get("quantity"),gold_rate:get("rate"),labor_pct:get("labor"),profit_pct:get("profit"),accessories:"0",discount:get("discount")};
+  const result=quote(p,input);
+  document.getElementById("weight-result").textContent=fmt(result.total_weight)+" گرم";
+  document.getElementById("raw-result").textContent=currency(result.raw_price);
+  document.getElementById("labor-result").textContent=currency(Number(result.labor_gold)*Number(result.gold_rate));
+  document.getElementById("profit-result").textContent=currency(result.profit_rial);
+  document.getElementById("final-result").textContent=currency(result.final_price);
+  document.getElementById("error").textContent="خروجی فقط در مرورگر محاسبه شد؛ فروش یا تراکنشی ثبت نشد.";
+ }catch(err){
+  ["weight-result","raw-result","labor-result","profit-result","final-result"].forEach(k=>document.getElementById(k).textContent="—");
+  document.getElementById("error").textContent=String(err?.message||err);
+ }
+}
+form.addEventListener("submit",calculate);calculate();
+</script></body></html>
