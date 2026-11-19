@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e8eeeb">
+<title>علیرضا اناری | کارت ویزیت تعاملی</title>
+<meta name="description" content="علیرضا اناری، توسعه‌دهنده نرم‌افزار. نمونه‌کارهای توسعه وب، API و ربات در یک کارت تعاملی.">
+<link rel="canonical" href="https://alireza-portfolio.alirezaanari117.workers.dev/card">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alireza-portfolio.alirezaanari117.workers.dev/card">
+<meta property="og:title" content="علیرضا اناری | کارت ویزیت تعاملی">
+<meta property="og:description" content="توسعه وب، API و ربات. سه پروژه، سه مسئله واقعی و راهی مستقیم برای شروع همکاری.">
+<meta property="og:image" content="https://alireza-portfolio.alirezaanari117.workers.dev/assets/contact-card-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="stylesheet" href="/assets/fonts/yekanbakh4-proplus-fanum.v2.css">
+<style>
+:root{color-scheme:light;--ink:#173638;--muted:#4d6965;--line:#c6d7d1;--teal:#235f57;--paper:#f4f8f5;--mono:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font:1rem/1.8 "Yekan Bakh FaNum",Tahoma,sans-serif;background:radial-gradient(ellipse at 50% 0%,#fbfdfc,transparent 65%),linear-gradient(90deg,#275a5310 1px,transparent 1px),linear-gradient(#275a5310 1px,transparent 1px),#e8eeeb;background-size:auto,32px 32px,32px 32px}
+a{color:inherit}a,button,input,select,summary{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid #438e80;outline-offset:4px}
+main{width:min(100% - 2rem,64rem);margin:auto;padding:clamp(1.5rem,7vw,5.5rem) 0 2rem}
+.card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);border:1px solid var(--line);border-radius:1.65rem;background:#f7faf7;overflow:hidden;box-shadow:0 24px 70px #183b3620}
+.identity,.lab{padding:clamp(1.3rem,4.8vw,3.2rem);min-width:0}
+.identity{align-self:center}
+.mark{display:grid;place-items:center;width:4.25rem;height:4.25rem;border-radius:1rem;background:linear-gradient(145deg,#a7d9c9,#317268 58%,#1b4144);box-shadow:0 .4rem 0 -.15rem #9abdb3;color:#fff;font:700 2.9rem/1 Georgia,serif;margin-bottom:1.4rem}
+.name-en{display:block;width:fit-content;color:#386860;font:700 .875rem var(--mono);letter-spacing:.12em}
+h1{font-size:clamp(2.25rem,5.2vw,4rem);line-height:1.25;margin:.55rem 0 .5rem;letter-spacing:-.025em}
+.role{font-size:1.16rem;font-weight:800;margin:0}
+.intro{color:var(--muted);margin:.5rem 0 1.5rem}
+.links,.share{display:flex;flex-wrap:wrap;gap:.55rem}
+.action{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:.45rem .85rem;border:1px solid var(--line);border-radius:.65rem;color:var(--teal);font:inherit;font-weight:750;background:#fff;text-decoration:none;cursor:pointer}
+.action.primary{background:#235f57;border-color:#235f57;color:#fff}
+.action:hover{box-shadow:0 0 0 2px #5d9b8a35}
+.lab{color:#edf9f3;background:linear-gradient(145deg,#2b504e,#142d32)}
+h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:.5rem 0 .25rem;line-height:1.45}
+.project-switch{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.2rem 0}
+.project-switch button{min-height:2.75rem;padding:.4rem .7rem;color:#e3f6ee;background:#29494a;border:1px solid #63827c;border-radius:.5rem;font:700 .82rem var(--mono);cursor:pointer}
+.project-switch button[aria-pressed="true"]{background:#bce9d9;color:#153a35;border-color:#bce9d9}
+.project-frame{position:relative;display:grid;align-content:end;min-height:14rem;isolation:isolate;overflow:hidden;padding:1.05rem;border-radius:1rem;border:1px solid #5d807a;background:#142e32}
+.project-frame::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 9% 5%,#74b6a861,transparent 62%),repeating-linear-gradient(0deg, transparent 0 22px,#b5ead525 22px 23px),repeating-linear-gradient(90deg, transparent 0 22px,#b5ead525 22px 23px)}
+.project-mark{position:absolute;inset-inline-end:1.25rem;top:.75rem;color:#9ccebe;font:700 3.25rem/1 Georgia,serif;letter-spacing:.02em}
+.project-kind{color:#bce4d7;font-weight:750;font-size:.875rem}
+.project-frame h3{margin:.2rem 0;font:700 clamp(1.25rem,3vw,1.75rem)/1.5 system-ui,sans-serif;text-align:start;width:fit-content}
+.project-frame p{min-height:3em;margin:0 0 .7rem;color:#e0efe9}
+.project-frame a{width:fit-content;text-underline-offset:.28em;font-weight:750}
+.project-frame.enter{animation:reveal .3s ease-out}
+@keyframes reveal{from{opacity:.55;transform:translateY(.35rem)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.project-frame.enter{animation:none}}
+.share{align-items:center;margin-top:1rem}
+.share .action{background:#f7faf8}.share-status{color:var(--muted);font-size:.875rem}
+@media(max-width:690px){.card{grid-template-columns:1fr;border-radius:1.125rem}.identity{padding-bottom:1.5rem}.mark{width:3.25rem;height:3.25rem;font-size:2.25rem;margin-bottom:1rem}.lab{border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<main>
+<article class="card" aria-labelledby="name">
+  <section class="identity">
+    <div class="mark" aria-hidden="true">A</div>
+    <span class="name-en" dir="ltr">ALIREZA ANARI</span>
+    <h1 id="name">علیرضا اناری</h1>
+    <p class="role">توسعه‌دهندهٔ نرم‌افزار</p>
+    <p class="intro">سامانه‌های رزرو، پنل‌های مدیریتی و ربات‌های متصل به فرایندهای کسب‌وکار می‌سازم.</p>
+    <div class="links">
+      <a class="action primary" href="mailto:alirezaanari119@gmail.com">گفت‌وگو دربارهٔ پروژه</a>
+      <a class="action" href="/">نمونه‌کارها</a>
+      <a class="action" href="/resume">رزومه</a>
+    </div>
+  </section>
+  <section class="lab" aria-labelledby="lab-title">
+    <h2 id="lab-title">نمونهٔ کار من، از نزدیک</h2>
+    <div class="project-switch" role="group" aria-label="انتخاب پروژه">
+      <button type="button" data-project="loomera" aria-pressed="true">Loomera</button>
+      <button type="button" data-project="madar" aria-pressed="false">Madar</button>
+      <button type="button" data-project="haniel" aria-pressed="false">HANI-EL GOLD</button>
+    </div>
+    <div class="project-frame" id="project" aria-live="polite" aria-atomic="true">
+      <span class="project-mark" id="project-mark" aria-hidden="true">L</span>
+      <span class="project-kind" id="project-kind">سامانهٔ رزرو خدمات</span>
+      <h3 id="project-name" dir="ltr">Loomera</h3>
+      <p id="project-description">هماهنگی برنامهٔ متخصصان و زمان‌های آزاد در یک مسیر رزرو.</p>
+      <a id="project-link" href="/projects/loomera">دیدن جزئیات پروژه</a>
+    </div>
+  </section>
+</article>
+<div class="share">
+  <a class="action" href="https://t.me/share/url?url=https%3A%2F%2Falireza-portfolio.alirezaanari117.workers.dev%2Fcard&amp;text=%D8%B9%D9%84%DB%8C%D8%B1%D8%B6%D8%A7%20%D8%A7%D9%86%D8%A7%D8%B1%DB%8C%20%7C%20%DA%A9%D8%A7%D8%B1%D8%AA%20%D9%88%DB%8C%D8%B2%DB%8C%D8%AA%20%D8%AA%D8%B9%D8%A7%D9%85%D9%84%DB%8C">ارسال در تلگرام</a>
+  <button class="action" id="copy" type="button">کپی لینک</button>
+  <span class="share-status" id="share-status" role="status"></span>
+</div>
+</main>
+<script>
+const projects = {
+  loomera: {
+    name: 'Loomera', mark: 'L', kind: 'سامانهٔ رزرو خدمات',
+    description: 'هماهنگی برنامهٔ متخصصان و زمان‌های آزاد در یک مسیر رزرو.',
+    path: '/projects/loomera',
+  },
+  madar: {
+    name: 'Madar', mark: 'M', kind: 'ربات تلگرام و مدیریت اشتراک',
+    description: 'طراحی مسیرهای جداگانه برای مشتری، فروشنده و مدیر، در یک ربات.',
+    path: '/projects/madar',
+  },
+  haniel: {
+    name: 'HANI-EL GOLD', mark: 'H', kind: 'فروشگاه آنلاین و قیمت‌گذاری',
+    description: 'کاتالوگ آنلاین طلا و محاسبهٔ قیمت بر پایهٔ وزن و نرخ.',
+    path: '/projects/haniel-gold',
+  },
+};
+const projectFrame = document.getElementById('project');
+const options = Array.from(document.querySelectorAll('[data-project]'));
+options.forEach(button => button.addEventListener('click', () => {
+  if (button.getAttribute('aria-pressed') === 'true') return;
+  const project = projects[button.dataset.project];
+  options.forEach(option => option.setAttribute('aria-pressed', String(option === button)));
+  document.getElementById('project-name').textContent = project.name;
+  document.getElementById('project-mark').textContent = project.mark;
+  document.getElementById('project-kind').textContent = project.kind;
+  document.getElementById('project-description').textContent = project.description;
+  document.getElementById('project-link').href = project.path;
+  projectFrame.classList.remove('enter');
+  requestAnimationFrame(() => requestAnimationFrame(() => projectFrame.classList.add('enter')));
+}));
+document.getElementById('copy').addEventListener('click', async () => {
+  const url = document.querySelector('link[rel="canonical"]').href;
+  const status = document.getElementById('share-status');
+  try {
+    await navigator.clipboard.writeText(url);
+    status.textContent = 'لینک کپی شد.';
+  } catch {
+    status.textContent = url;
+  }
+});
+</script>
+</body>
+</html>
