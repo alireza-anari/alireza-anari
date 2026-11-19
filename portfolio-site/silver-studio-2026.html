@@ -54,6 +54,24 @@ body.night{background:linear-gradient(#15282b,#1a3233);color:#eef5f3}body.night 
 .pane h2{overflow-wrap:anywhere}
 @media(max-width:1270px){.triple{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.triple{grid-template-columns:minmax(0,1fr)}}
+
+/* First-screen composition: align hero / shelf / three panels with approved reference */
+@media(min-width:1041px){
+ .hero{min-height:285px;padding-top:0;padding-bottom:6px}
+ .hero h1{font-size:clamp(32px,2.85vw,46px);line-height:1.36;margin:0 0 10px}
+ .hero p{margin:0 0 13px;line-height:1.85;font-size:12px}
+ .abstract{min-height:255px}
+ .shelf{padding-block:12px 13px;margin:2px 0 12px}
+ .shelf-top{margin-bottom:8px}
+ .shelf-card{height:136px}
+ .shelf-info{padding:11px 12px}
+ .triple{margin-bottom:12px}
+ .pane{padding:12px 13px;min-height:218px}
+ .pane h2{margin-bottom:10px}
+ .process-steps div{min-height:91px;padding:7px 4px}
+ .lab-icon{height:96px}
+ .skills-bar{margin-bottom:25px}
+}
 </style></head><body>
 <div class="studio-frame"><aside class="side-rail" aria-label="ناوبری اصلی"><a href="#top" class="rail-brand"><span class="rail-logo">A</span><strong>Alireza Anari</strong><small>SOFTWARE ENGINEER</small></a><nav class="rail-links">
 <a href="#top" class="rail-active"><span>⌂</span><b data-t="railHome">خانه</b></a>
@@ -92,6 +110,7 @@ export const asciiDigits=x=&gt;String(x??'').replace(/[۰-۹]/g,c=&gt;String(c.c
 export function dec(x,label='عدد') {
  const s=asciiDigits(x).trim().replace(/[,٬،\s]/g,'');
  if(!/^-?\d+(\.\d{1,15})?$/.test(s)||s.length&gt;38)throw Error(`«${label}» باید عدد معتبر با حداکثر ۱۵ رقم اعشار باشد.`);</code></pre><output id="code-out" aria-live="polite">READY · SAMPLE DATA ONLY</output></div><div class="source-actions"><button type="button" id="code-run" data-t="codeRun">اجرای محاسبه ▶</button><a href="/original/haniel-finance/" data-t="codeMore">بازکردن دموی کامل ↗</a></div></article></section>
+<section class="skills-bar wrap" id="skills"><div><h2 data-t="skillsTitle">مهارت‌های کلیدی</h2><p data-t="skillsDesc">فناوری‌های مورد استفاده در پروژه‌ها</p></div><div class="skill-badges"><span>🐍 Python</span><span>dj Django</span><span>▤ Docker</span><span>▥ Redis</span><span>▣ PostgreSQL</span><span>☁ Cloudflare</span><span>⌁ Git</span></div></section>
 <section class="lab-section wrap" id="lab"><div class="section-title"><div><span class="num">01 / INTERACTIVE SYSTEM LAB</span><h2 data-t="labTitle">رفتار سیستم را ببینید، نه فقط ظاهرش را.</h2></div><p data-t="labDesc">با یک کلیک سناریوی آزمایشی اجرا می‌شود؛ پاسخ، وضعیت خطا و مسیر عبور درخواست را شفاف می‌بینید.</p></div>
  <div class="lab-shell">
  <div class="lab-top"><div class="lab-location"><span class="lights"><i></i><i></i><i></i></span><b>anari.systems / lab</b></div><span class="safety">● SANDBOX · NO LIVE DATA</span></div>
@@ -121,7 +140,7 @@ export function dec(x,label='عدد') {
  <article class="proof-item"><div class="proof-icon">↳ 02 / REAL MODULE</div><h3 data-t="proof2">اتصال به کد پروژه</h3><p data-t="proof2desc">سناریوی مالی به فایل اصلی BigInt پروژه HANI-EL GOLD متصل است؛ سایر سناریوها آشکارا شبیه‌سازی‌اند.</p><a href="/original/haniel-finance/" data-t="proofLink2">اجرای ماژول اصلی ↗</a></article>
  <article class="proof-item"><div class="proof-icon">↳ 03 / NAVIGATION</div><h3 data-t="proof3">جستجوی سریع با صفحه‌کلید</h3><p data-t="proof3desc">Ctrl+K را بزنید؛ پروژه یا قابلیت را پیدا کنید و مستقیم به صفحه تخصصی آن بروید. روی موبایل هم در دسترس است.</p><a href="#" id="proof-open-palette" data-t="proofLink3">جستجوی قابلیت‌ها ↗</a></article></div>
 </section>
-<section class="skills-bar wrap" id="skills"><div><h2 data-t="skillsTitle">مهارت‌های کلیدی</h2><p data-t="skillsDesc">فناوری‌های مورد استفاده در پروژه‌ها</p></div><div class="skill-badges"><span>🐍 Python</span><span>dj Django</span><span>▤ Docker</span><span>▥ Redis</span><span>▣ PostgreSQL</span><span>☁ Cloudflare</span><span>⌁ Git</span></div></section>
+
 <section class="wrap" id="contact"><div class="footer-cta"><div class="footer-icon">↗</div><div><h2 data-t="contactTitle">ایده‌تان را به یک سیستم قابل استفاده تبدیل کنیم.</h2><p data-t="contactDesc">درباره مسئله کسب‌وکارتان صحبت کنیم؛ نیازی نیست از قبل همه جزئیات فنی را بدانید.</p></div><a class="button solid" href="mailto:alirezaanari119@gmail.com?subject=%D8%AF%D8%B1%D8%AE%D9%88%D8%A7%D8%B3%D8%AA%20%D9%BE%D8%B1%D9%88%DA%98%D9%87" data-t="contactBtn">شروع گفت‌وگو ↗</a></div></section>
 </main>
 <footer class="wrap bottom"><span>© ALIREZA ANARI / ENGINEERING STUDIO</span><span>BUILT WITH HTML · CSS · JAVASCRIPT</span></footer></div></div>
