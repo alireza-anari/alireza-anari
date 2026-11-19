@@ -1,3 +1,19 @@
+## Approved silver-teal redesign — 2026-11-19
+
+The user selected a light silver, restrained teal engineering-studio reference (right sidebar, interactive architecture hero, four-project shelf, workflow, lab, real code, skill strip).
+
+**Source of truth:** `portfolio-site/silver-studio-2026.html`. It is now the active Cloudflare Workers homepage at `/` and `/index.html`, served by the `SILVER_STUDIO` constant in Worker `alireza-portfolio`. The same artifact is accessible at `/preview/silver-studio` with `X-Robots-Tag: noindex,nofollow`; the production document itself is indexable with canonical URL.
+
+Actual implementation, not a flattened image:
+- Light/silver responsive interface, 185px right sidebar on desktop and fixed five-item bottom navigation on mobile; interactive architecture map with accessible buttons, top Cmd/Ctrl+K command search, language toggle and night-mode switch.
+- Project showcase for **Madar, HANI-EL GOLD, Loomera, Velo**, with status labels and real existing gallery assets. IRONVEIL from the visual reference was **not** silently inserted as a verified commercial case study.
+- A three-panel first-screen row for workflow, guided lab entry and an **exact snippet of original** `haniel-finance-source.js`; sample execution imports the original `/original/haniel-finance/finance.js` (BigInt financial module) with illustrative, local-only values.
+- Full existing interactive lab, project detail pages, résumé, verified code excerpts, and independent demos preserved.
+- No visible plain email address, raw repository links, fabricated commercial outcomes, live sales claims, or live VPN claims.
+- GitHub source updates do **not** automatically update this Worker. Keep root route interception **before** the existing `META[p]` homepage handler; the previous attempt matched that legacy handler and did not replace the public homepage until this was corrected.
+- QA: live root and `/index.html` title and page links verified after deployment, 1440px desktop layout and 390px mobile layout measured using Cloudflare browser rendering on preview, including 4 cards, 3 balanced panel widths, right rail and mobile bottom rail. Further post-promotion browser scraping was intermittently blocked by Cloudflare 429 / 5006. Full interaction regression was not run; do not claim complete E2E coverage.
+
+
 ## November 2026 GitHub-source refresh & final UI polish
 
 Updated the live portfolio against the **actual current project repositories**, with a strict source/evidence boundary:
