@@ -1,3 +1,9 @@
+## Portfolio résumé download
+
+The Persian PDF is available at `/resume/Alireza-Anari-Resume.pdf`. The Worker serves it as an attachment and serves the QR and card stylesheet at `/assets/resume-download-qr.svg` and `/assets/resume-download.css`. The QR encodes the canonical public PDF URL. The homepage and both languages of the online résumé link to the same file.
+
+The deployed Worker keeps the résumé markup in both the server-rendered `SSR["/resume"]` entry and the client-side language templates. Preserve the asset routes and both templates when updating the Worker separately from this repository.
+
 ## Approved silver-teal redesign — 2026-11-19
 
 The user selected a light silver, restrained teal engineering-studio reference (right sidebar, interactive architecture hero, four-project shelf, workflow, lab, real code, skill strip).
