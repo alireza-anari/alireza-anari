@@ -212,7 +212,22 @@ async function run(){
  try{for(let i=0;i<=result.stopAt;i++){const node=document.querySelector('.flow-node[data-stage="'+i+'"]');node.classList.add("active");node.querySelector(".station-step").textContent="RUNNING";logLine(l(scenario[currentMode].labels[i])+" · "+(lang==="fa"?"پردازش":"processing"));await delay(window.matchMedia("(prefers-reduced-motion: reduce)").matches?30:210);node.classList.remove("active");node.classList.add(i===result.stopAt&&result.code>=400?"failed":"done");node.querySelector(".station-step").textContent=i===result.stopAt&&result.code>=400?"REJECTED":"PASS"}result.logs.forEach(x=>logLine(x,result.code>=400));$("status").textContent="HTTP "+result.code;$("status").classList.toggle("error",result.code>=400);$("response").textContent=JSON.stringify(result.data,null,2)}finally{busy=false;$("run").disabled=false;$("clear").disabled=false;document.querySelectorAll(".tab").forEach(x=>x.disabled=false)}}
 function reset(){if(busy)return;booked=new Set(["12:00"]);renderScenario()}
 function renderCase(){const html=projects.map((p,i)=>'<button type="button" role="tab" aria-selected="'+(caseId===p.id)+'" class="case-row '+(caseId===p.id?"selected":"")+'" data-case="'+p.id+'"><span><span class="case-id">0'+(i+1)+' / '+escapeHtml(l(p.stage))+'</span><strong>'+escapeHtml(p.n)+'</strong><small>'+escapeHtml(l(p.type))+'</small></span><span class="case-arrow">↗</span></button>').join("");$("case-list").innerHTML=html;const p=projects.find(x=>x.id===caseId)||projects[0];const image=p.img?'<img src="'+p.img+'" alt="'+escapeHtml(p.n)+' — '+escapeHtml(l(p.type))+'" loading="lazy">':"";$("case-preview").innerHTML='<div class="case-visual '+(p.id==="madar"?"madar":"")+'">'+image+'<div class="visual-label"><b>'+escapeHtml(p.n)+'</b><span>'+escapeHtml(l(p.stage))+'</span></div></div><div class="case-preview-meta"><p>'+escapeHtml(l(p.summary))+'</p><span class="case-proof">CASE / SOURCE VERIFIED</span></div><div class="case-tags">'+p.tags.map(x=>'<span>'+escapeHtml(x)+'</span>').join("")+'</div><div class="case-links"><a class="primary" href="'+p.route+'">'+t("project")+'</a>'+(p.demo?'<a href="'+p.demo+'">'+t("liveDemo")+'</a>':"")+'</div>'}
-function renderPalette(){const q=$("palette-input").value.trim().toLowerCase(),items=searchIndex.filter(x=>(x[0]+" "+x[2]).toLowerCase().includes(q));$("palette-results").innerHTML=items.length?items.map(x=>'<a href="'+x[1]+'"><span>'+escapeHtml(x[0])+'</span><small>'+escapeHtml(x[2])+' ↗</small></a>').join(""):'<div style="padding:14px;color:#627368">'+t("empty")+'</div>'}
+const paletteAliases={
+"/projects/loomera":"لومرا رزرو نوبت",
+"/projects/madar":"مدار ربات اشتراک",
+"/projects/haniel-gold":"هانی ال طلا فروشگاه",
+"/projects/velo":"ولو ویلو موبایل اندروید",
+"/features/loomi":"لومی دستیار هوش مصنوعی",
+"/features/telegram-bot":"ربات تلگرام",
+"/features/bale-bot":"ربات بله",
+"/features/otp-auth":"احراز هویت رمز یکبار مصرف",
+"/features/booking":"رزرو نوبت تداخل زمان",
+"/features/role-dashboards":"داشبورد نقش دسترسی",
+"/original/haniel-finance/":"محاسبه قیمت طلا مالی",
+"/resume":"رزومه سوابق"
+};
+function normalizePalette(text){return text.toLowerCase().replace(/ي/g,"ی").replace(/ك/g,"ک").replace(/[\s\u200c]+/g," ").trim()}
+function renderPalette(){const q=normalizePalette($("palette-input").value),items=searchIndex.filter(([title,url,category])=>normalizePalette([title,category,paletteAliases[url]].join(" ")).includes(q));$("palette-results").innerHTML=items.length?items.map(x=>'<a href="'+x[1]+'"><span>'+escapeHtml(x[0])+'</span><small>'+escapeHtml(x[2])+' ↗</small></a>').join(""):'<div style="padding:14px;color:#627368">'+t("empty")+'</div>'}
 function openPalette(e){if(e)e.preventDefault();$("palette").classList.add("open");$("palette-input").focus();renderPalette()}
 function closePalette(){$("palette").classList.remove("open");$("palette-input").value=""}
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>selectMode(b.dataset.mode)));
